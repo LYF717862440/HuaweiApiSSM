@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.liangyaofeng.dao.ClassifyDao">
+
+    <!--查询所有-->
+    <select id="selectAllClassify" resultType="com.liangyaofeng.entity.Classify">
+        select cid,Sort,Series from classify
+    </select>
+
+    <!--添加-->
+    <insert id="addClassify">
+        insert into classify(cid,Sort,Series) values(#{cid},#{sort},#{series})
+    </insert>
+
+
+    <!--修改-->
+    <update id="updateClassify">
+        update classify
+        <set>
+            <if test="sort!=null and sort!=''">
+                sort=#{sort},
+            </if>
+            <if test="series!=null and series!=''">
+                Series=#{series},
+            </if>
+        </set>
+    </update>
+
+
+    <!--删除-->
+    <delete id="deleteClassify">
+        delete from classify where cid=#{cid}
+    </delete>
+
+    <!--多删除-->
+    <delete id="deleteClasifyBylist">
+        delete from classify where cid in
+        <foreach collection="list" open="(" item="cid" separator="," close=")">
+            #{cid}
+        </foreach>
+    </delete>
+
+
+
+    <!--分页 -->
+    <select id="getClassifyPager" resultType="com.liangyaofeng.entity.Goods">
+        select cid,Sort,Series from classify limit #{skip},#{size}
+    </select>
+
+
+
+    <!--获得总数 -->
+    <select id="getClassifyCount" resultType="int">
+        select count(*) from classify
+    </select>
+
+
+</mapper>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.liangyaofeng.dao.GoodsParamsDao">
+
+    <!--查询所有-->
+    <select id="selectAllGoodsParams" resultType="com.liangyaofeng.entity.Goodsparams">
+        select Gcoding,Brand,TTM,CPUtype,CPUAudit,Audroid,ScreenSize,ScreenColor,
+        Dpi,RAM,GB,HDFront,RearCamera,NAH,Psystem
+        from goodsparams
+    </select>
+
+    <!--根据gcoding查询-->
+    <select id="selectGoodsParamsbygcoding" resultType="com.liangyaofeng.entity.Goodsparams">
+        select Gcoding,Brand,TTM,CPUtype,CPUAudit,Audroid,ScreenSize,ScreenColor,
+        Dpi,RAM,GB,HDFront,RearCamera,NAH,Psystem
+        from goodsparams
+        where Gcoding=#{gcoding}
+    </select>
+
+    <!--根据名称查询-->
+    <select id="selectGoodsParamsbybrand" resultType="com.liangyaofeng.entity.Goodsparams">
+        select Gcoding,Brand,TTM,CPUtype,CPUAudit,Audroid,ScreenSize,ScreenColor,
+        Dpi,RAM,GB,HDFront,RearCamera,NAH,Psystem
+        from goodsparams
+        <where>
+            <if test="brand!=null and brand!=''">
+                and brand like concat(concat('%',#{brand}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!--添加-->
+    <insert id="addGoodsParams">
+        insert into goodsparams(Gcoding,Brand,TTM,CPUtype,CPUAudit,Audroid,ScreenSize,
+        ScreenColor,Dpi,RAM,GB,HDFront,RearCamera,NAH,Psystem)
+        values(#{gcoding},#{brand},#{ttm},#{cputype},#{cpuaudit},#{audroid},#{screenSize},#{screenColor},
+        #{dpi},#{ram},#{gb},#{hDFront},#{rearCamera},#{nah},#{psystem})
+
+    </insert>
+
+
+    <!--修改-->
+    <update id="updateGoodsParams">
+        update goodsparams
+        <set>
+            <if test="brand!=null and brand!=''">
+                brand=#{brand},
+            </if>
+            <if test="ttm!=null and ttm!=''">
+                ttm=#{ttm},
+            </if>
+            <if test="cputype!=null and cputype!=''">
+                cputype=#{cputype},
+            </if>
+            <if test="cpuaudit!=null and cpuaudit!=''">
+                cpuaudit=#{cpuaudit},
+            </if>
+            <if test="audroid!=null and audroid!=''">
+                audroid=#{audroid},
+            </if>
+            <if test="screenSize!=null and screenSize!=''">
+                screenSize=#{screenSize},
+            </if>
+            <if test="screenColor!=null and screenColor!=''">
+                screenColor=#{screenColor},
+            </if>
+            <if test="dpi!=null and dpi!=''">
+                dpi=#{dpi},
+            </if>
+            <if test="ram!=null and ram!=''">
+                ram=#{ram},
+            </if>
+            <if test="gb!=null and gb!=''">
+                gb=#{gb},
+            </if>
+            <if test="hDFront!=null and hDFront!=''">
+                hDFront=#{hDFront},
+            </if>
+            <if test="rearCamera!=null and rearCamera!=''">
+                rearCamera=#{rearCamera},
+            </if>
+            <if test="nah!=null and nah!=''">
+                nah=#{nah},
+            </if>
+            <if test="psystem!=null and psystem!=''">
+                psystem=#{psystem},
+            </if>
+        </set>
+        where gcoding=#{gcoding}
+    </update>
+
+
+    <!--删除-->
+    <delete id="deleteGoodsParams">
+        delete from goodsparams where gcoding=#{gcoding}
+    </delete>
+
+    <!--多删除-->
+    <delete id="deletegoodsbyList">
+        delete from goodsparams where Gcoding in
+        <foreach collection="list" open="(" item="gcoding" separator="," close=")">
+            #{gcoding}
+        </foreach>
+    </delete>
+
+
+
+
+    <!--分页 -->
+    <select id="getGoodsParamsPager" resultType="com.liangyaofeng.entity.Goods">
+        select Gcoding,Brand,TTM,CPUtype,CPUAudit,Audroid,ScreenSize,ScreenColor,
+        Dpi,RAM,GB,HDFront,RearCamera,NAH,Psystem
+        from goodsparams limit #{skip},#{size}
+    </select>
+
+
+
+    <!--获得总数 -->
+    <select id="getGoodsParamsCount" resultType="int">
+        select count(*) from goodsparams
+    </select>
+
+
+</mapper>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.liangyaofeng.dao.GoodsDao">
+
+    <!--查询所有-->
+    <select id="selectAllGoods" resultType="com.liangyaofeng.entity.Goods">
+        select gid,cid,Gname,Gimg,Gtype,Gprice,Gexplain,Gcoding,Colour,
+        Versions,Details,Stock,Gstate,Loadingtime,Aid
+        from goods
+        <where>
+            <if test="gname!=null and gname!=''">
+                Gname like concat(concat('%',#{gname}),'%')
+            </if>
+        </where>
+    </select>
+
+    <!--根据gid查询-->
+    <select id="selectgoodsBygid" resultType="com.liangyaofeng.entity.Goods">
+        select gid,cid,Gname,Gimg,Gtype,Gprice,Gexplain,Gcoding,Colour,
+        Versions,Details,Stock,Gstate,Loadingtime,Aid
+        from goods
+        where Gid=#{gid}
+    </select>
+
+    <!--添加-->
+    <insert id="addGoods">
+        insert into goods(gid,cid,Gname,Gimg,Gtype,Gprice,Gexplain,Gcoding,
+        Colour,Versions,Details,Stock,Gstate,Aid)
+        values (#{gid},#{cid},#{gname},#{gimg},#{gtype},#{gprice},#{gexplain},#{gcoding},
+        #{colour},#{versions},#{details},#{stock},#{gstate},#{aid})
+    </insert>
+
+
+    <!--修改-->
+    <update id="updateGoods">
+        update goods
+        <set>
+            <if test="cid!=null and cid!=''">
+                cid=#{cid},
+            </if>
+            <if test="gname!=null and gname!=''">
+                gname=#{gname},
+            </if>
+            <if test="gimg!=null and gimg!=''">
+                gimg=#{gimg},
+            </if>
+            <if test="gtype!=null and gtype!=''">
+                gtype=#{gtype},
+            </if>
+            <if test="gprice!=null and gprice!=''">
+                gprice=#{gprice},
+            </if>
+            <if test="gexplain!=null and gexplain!=''">
+                gexplain=#{gexplain},
+            </if>
+            <if test="gcoding!=null and gcoding!=''">
+                gcoding=#{gcoding},
+            </if>
+            <if test="colour!=null and colour!=''">
+                colour=#{colour},
+            </if>
+            <if test="versions!=null and versions!=''">
+                versions=#{versions},
+            </if>
+            <if test="details!=null and details!=''">
+                details=#{details},
+            </if>
+            <if test="stock!=null and stock!=''">
+                stock=#{stock},
+            </if>
+            <if test="gstate!=null and gstate!=''">
+                gstate=#{gstate},
+            </if>
+            <if test="aid!=null and aid!=''">
+                aid=#{aid}
+            </if>
+        </set>
+        where gid=#{gid}
+    </update>
+
+
+    <!--删除-->
+    <delete id="deleteGoodsbyGid">
+        delete from goods where Gid=#{gid}
+    </delete>
+
+    <!--多删除-->
+    <delete id="deletegoodsbyList">
+        delete from goods where gid in
+        <foreach collection="list" open="(" item="gid" separator="," close=")">
+            #{gid}
+        </foreach>
+    </delete>
+
+
+
+    <!--分页 -->
+    <select id="getGoodsPager" resultType="com.liangyaofeng.entity.Goods">
+        select gid,cid,Gname,Gimg,Gtype,Gprice,Gexplain,Gcoding,Colour,
+        Versions,Details,Stock,Gstate,Loadingtime,Aid
+        from goods limit #{skip},#{size}
+    </select>
+
+
+
+    <!--获得总数 -->
+    <select id="getGoodsCount" resultType="int">
+        select count(*) from goods
+    </select>
+
+
+
+
+
+
+
+</mapper>

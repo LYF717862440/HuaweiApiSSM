@@ -1,0 +1,36 @@
+package com.liangyaofeng.controller;
+
+import com.liangyaofeng.common.R;
+import com.liangyaofeng.service.UsersServie;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+
+@Controller
+@RequestMapping("admin/users")
+public class UsersController {
+
+
+    @Autowired
+    UsersServie usersServie;
+
+
+    @RequestMapping("/usersInfopage")
+    @ResponseBody
+    public R usersInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2){
+        return R.ok(usersServie.getUsersPager(param1,param2));
+    }
+
+    @RequestMapping("/userscount")
+    @ResponseBody
+    public R userscount(){
+        return R.ok(usersServie.getUsersCount());
+    }
+
+
+
+
+}

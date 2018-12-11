@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.liangyaofeng.dao.AdministratorsDao">
+
+    <!--查询所有-->
+    <select id="selectAllAdmin" resultType="com.liangyaofeng.entity.Administrators">
+        select * from administrators
+    </select>
+
+
+
+    <!--登录-->
+    <!--根据登录账号查询-->
+    <select id="selectAllbyloginId" resultType="com.liangyaofeng.entity.Administrators">
+        select Aid,LoginId,Password,Aname,Asex,jop,Aphone,Abirthday,Astate
+        from administrators
+        where LoginId=#{loginId}
+    </select>
+
+    <!--添加-->
+    <insert id="addAdministrators">
+        insert into administrators(Aid,LoginId,Password,Aname,Asex,jop,Aphone,Abirthday,Astate)
+        values (#{aid},#{loginId},#{password},#{aname},#{asex},#{jop},#{aphone},#{abirthday},#{astate})
+    </insert>
+
+
+    <!--删除-->
+    <delete id="deleteAdministrators">
+        delete from administrators where LoginId=#{loginId}
+    </delete>
+
+    <!--多删除-->
+    <delete id="deleteadminbyList">
+        delete from administrators where loginId in
+        <foreach collection="list" open="(" item="loginId" separator="," close=")">
+            #{loginId}
+        </foreach>
+    </delete>
+
+    <!--修改-->
+    <update id="updateAdministrators">
+        update administrators
+        <set>
+            <if test="password!=null and password!=''">
+                Password =#{password},
+            </if>
+            <if test="aname!=null and aname!=''">
+                Aname =#{aname},
+            </if>
+            <if test="asex!=null and asex!=''">
+                Asex =#{asex},
+            </if>
+            <if test="jop!=null and jop!=''">
+                jop =#{jop},
+            </if>
+            <if test="aphone!=null and aphone!=''">
+                Aphone =#{aphone},
+            </if>
+            <if test="abirthday!=null and abirthday!=''">
+                Abirthday =#{abirthday},
+            </if>
+            <if test="astate!=null and astate!=''">
+                Astate =#{astate},
+            </if>
+        </set>
+        where Aid=#{aid}
+    </update>
+
+
+
+    <!--分页 -->
+    <select id="getAdmnPager" resultType="com.liangyaofeng.entity.Administrators">
+        select * from administrators limit #{skip},#{size}
+    </select>
+
+
+
+    <!--获得总数 -->
+    <select id="getadminCount" resultType="int">
+        select count(*) from administrators
+    </select>
+
+
+
+
+
+</mapper>
