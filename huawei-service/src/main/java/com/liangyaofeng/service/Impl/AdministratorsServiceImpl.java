@@ -64,6 +64,13 @@ public class AdministratorsServiceImpl implements AdministratorsService{
         return administratorsDao.updateAdministrators(administrators);
     }
 
+    public boolean deleteadminbyList(List<String> loginIds) {
+        if(loginIds==null||loginIds.size()<=0) {
+            return false;
+        }
+        return administratorsDao.deleteadminbyList(loginIds);
+    }
+
     public List<Administrators> getAdmnPager(int pageNO, int size) {
         int skip=(pageNO-1)*size;
         return administratorsDao.getAdmnPager(skip,size);

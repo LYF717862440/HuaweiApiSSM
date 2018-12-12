@@ -1,16 +1,20 @@
 package com.liangyaofeng.controller;
 
 import com.liangyaofeng.common.R;
+import com.liangyaofeng.entity.Classify;
 import com.liangyaofeng.service.ClassifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.List;
+
 
 @Controller
-@RequestMapping("admin/classify")
+@RequestMapping("classify")
 public class ClassifyController {
 
     @Autowired
@@ -29,6 +33,34 @@ public class ClassifyController {
     public R classifycount(){
         return R.ok(classifyService.getClassifyCount());
     }
+
+
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public R add(Classify classify){
+        return  R.ok(classifyService.addClassify(classify));
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public R update(Classify classify){
+        return  R.ok(classifyService.updateClassify(classify));
+    }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public R delete(String cid){
+        return  R.ok(classifyService.deleteClassify(cid));
+    }
+
+    @RequestMapping("/deletelist")
+    @ResponseBody
+    public R deletelist(@RequestBody List<String> cids){
+        return R.ok(classifyService.deleteClasifyBylist(cids));
+    }
+
+
 
 
 

@@ -19,6 +19,8 @@ public interface UsersDao {
 
     boolean deleteUsersbyloginId(String loginId);
 
+    boolean deleteUsersbyList(List<String> loginIds);
+
     List<Users> getUsersPager(@Param("skip") int skip,@Param("size") int size);
 
     int getUsersCount();

@@ -2,12 +2,16 @@ package com.liangyaofeng.controller;
 
 import com.liangyaofeng.common.R;
 import com.liangyaofeng.dao.GoodsParamsDao;
+import com.liangyaofeng.entity.Goodsparams;
 import com.liangyaofeng.service.GoodsParamsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("goodsparams")
@@ -28,6 +32,32 @@ public class GoodsParamsController {
     @ResponseBody
     public R goodsparamscount(){
         return R.ok(goodsParamsService.getGoodsParamsCount());
+    }
+
+
+
+    @RequestMapping("/add")
+    @ResponseBody
+    public R add(Goodsparams goodsparams){
+        return  R.ok(goodsParamsService.addGoodsParams(goodsparams));
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public R update(Goodsparams goodsparams){
+        return  R.ok(goodsParamsService.updateGoodsParams(goodsparams));
+    }
+
+    @RequestMapping("/delete")
+    @ResponseBody
+    public R delete(String gcoding){
+        return  R.ok(goodsParamsService.deleteGoodsParams(gcoding));
+    }
+
+    @RequestMapping("/deletelist")
+    @ResponseBody
+    public R deletelist(@RequestBody List<String> gcodings){
+        return R.ok(goodsParamsService.deletegoodsbyList(gcodings));
     }
 
 

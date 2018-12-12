@@ -108,7 +108,7 @@
 
 
     <!--分页 -->
-    <select id="getGoodsParamsPager" resultType="com.liangyaofeng.entity.Goods">
+    <select id="getGoodsParamsPager" resultType="com.liangyaofeng.entity.Goodsparams">
         select Gcoding,Brand,TTM,CPUtype,CPUAudit,Audroid,ScreenSize,ScreenColor,
         Dpi,RAM,GB,HDFront,RearCamera,NAH,Psystem
         from goodsparams limit #{skip},#{size}

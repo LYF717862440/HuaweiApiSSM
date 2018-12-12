@@ -44,7 +44,7 @@
 
 
     <!--分页 -->
-    <select id="getClassifyPager" resultType="com.liangyaofeng.entity.Goods">
+    <select id="getClassifyPager" resultType="com.liangyaofeng.entity.Classify">
         select cid,Sort,Series from classify limit #{skip},#{size}
     </select>
 

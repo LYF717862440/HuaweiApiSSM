@@ -24,6 +24,8 @@ public interface UsersServie {
 
     boolean deleteUsersbyloginId(String loginId);
 
+    boolean deleteUsersbyList(List<String> loginIds);
+
 
     List<Users> getUsersPager( int pageNO, int size);
 

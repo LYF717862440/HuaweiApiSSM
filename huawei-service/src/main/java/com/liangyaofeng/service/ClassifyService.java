@@ -14,6 +14,8 @@ public interface ClassifyService {
 
     boolean deleteClassify(String cid);
 
+    boolean deleteClasifyBylist(List<String> cids);
+
     List<Classify> getClassifyPager( int pageNO, int size);
 
     int getClassifyCount();

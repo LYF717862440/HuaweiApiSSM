@@ -32,6 +32,13 @@ public class ClassifyServiceImpl implements ClassifyService {
         return classifyDao.deleteClassify(cid);
     }
 
+    public boolean deleteClasifyBylist(List<String> cids) {
+        if(cids==null||cids.size()<=0) {
+            return false;
+        }
+        return classifyDao.deleteClasifyBylist(cids);
+    }
+
     public List<Classify> getClassifyPager(int pageNO, int size) {
         int skip=(pageNO-1)*size;
         return classifyDao.getClassifyPager(skip,size);

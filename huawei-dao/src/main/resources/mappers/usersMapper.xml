@@ -93,7 +93,7 @@
 
 
     <!--分页 -->
-    <select id="getUsersPager" resultType="com.liangyaofeng.entity.Goods">
+    <select id="getUsersPager" resultType="com.liangyaofeng.entity.Users">
         select Uid,loginId,Password,Uname,Sex,Uphone,Balance,Ubirthday,Ustate
         from users limit #{skip},#{size}
     </select>

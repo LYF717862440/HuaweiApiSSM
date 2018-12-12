@@ -69,12 +69,21 @@ public class UsersServiceImpl implements UsersServie {
         return usersDao.addUsers(users);
     }
 
+
+
     public boolean updateUsers(Users users) {
         return usersDao.updateUsers(users);
     }
 
     public boolean deleteUsersbyloginId(String loginId) {
         return usersDao.deleteUsersbyloginId(loginId);
+    }
+
+    public boolean deleteUsersbyList(List<String> loginIds) {
+        if(loginIds==null||loginIds.size()<=0) {
+            return false;
+        }
+        return usersDao.deleteUsersbyList(loginIds);
     }
 
     public List<Users> getUsersPager(int pageNO, int size) {

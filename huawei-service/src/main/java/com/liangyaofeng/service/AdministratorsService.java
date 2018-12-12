@@ -21,6 +21,8 @@ public interface AdministratorsService {
 
     boolean updateAdministrators(Administrators administrators);
 
+    boolean deleteadminbyList(List<String> loginIds);
+
     List<Administrators> getAdmnPager( int pageNO, int size);
 
     int getadminCount();
