@@ -36,17 +36,22 @@ public class AdministratorsController {
 
     @RequestMapping("/adminInfopage")
     @ResponseBody
-    public R adminInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2){
-        return R.ok(administratorsService.getAdmnPager(param1,param2));
+    public R adminInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2,String loginId,String aname,String jop){
+        return R.ok(administratorsService.getAdmnPager(param1,param2, loginId, aname, jop));
     }
 
     @RequestMapping("/admincount")
     @ResponseBody
-    public R admincount(){
-        return R.ok(administratorsService.getadminCount());
+    public R admincount(String loginId,String aname,String jop){
+        return R.ok(administratorsService.getadminCount( loginId, aname, jop));
     }
 
 
+    @RequestMapping("/selectbyid")
+    @ResponseBody
+    public R selectbyid(String aid){
+        return  R.ok(administratorsService.selectAdminbyid(aid));
+    }
 
     @RequestMapping("/add")
     @ResponseBody

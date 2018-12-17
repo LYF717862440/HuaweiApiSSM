@@ -8,6 +8,10 @@
         select * from administrators
     </select>
 
+    <select id="selectAdminbyid" resultType="com.liangyaofeng.entity.Administrators">
+        select * from administrators where Aid=#{aid}
+    </select>
+
 
 
     <!--登录-->
@@ -71,7 +75,19 @@
 
     <!--分页 -->
     <select id="getAdmnPager" resultType="com.liangyaofeng.entity.Administrators">
-        select * from administrators limit #{skip},#{size}
+        select * from administrators
+        <where>
+            <if test="loginId!=null and loginId!= ''">
+                and loginId like concat(concat('%',#{loginId}),'%')
+            </if>
+            <if test="aname!=null and aname!= ''">
+                and aname like concat(concat('%',#{aname}),'%')
+            </if>
+            <if test="jop!=null and jop!= ''">
+                and jop like concat(concat('%',#{jop}),'%')
+            </if>
+        </where>
+        limit #{skip},#{size}
     </select>
 
 
@@ -79,6 +95,17 @@
     <!--获得总数 -->
     <select id="getadminCount" resultType="int">
         select count(*) from administrators
+        <where>
+            <if test="loginId!=null and loginId!= ''">
+                and loginId like concat(concat('%',#{loginId}),'%')
+            </if>
+            <if test="aname!=null and aname!= ''">
+                and aname like concat(concat('%',#{aname}),'%')
+            </if>
+            <if test="jop!=null and jop!= ''">
+                and jop like concat(concat('%',#{jop}),'%')
+            </if>
+        </where>
     </select>
 
 

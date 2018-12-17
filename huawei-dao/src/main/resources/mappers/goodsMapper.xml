@@ -99,7 +99,19 @@
     <select id="getGoodsPager" resultType="com.liangyaofeng.entity.Goods">
         select gid,cid,Gname,Gimg,Gtype,Gprice,Gexplain,Gcoding,Colour,
         Versions,Details,Stock,Gstate,Loadingtime,Aid
-        from goods limit #{skip},#{size}
+        from goods
+        <where>
+            <if test="gname!=null and gname!= ''">
+                and gname like concat(concat('%',#{gname}),'%')
+            </if>
+            <if test="gtype!=null and gtype!= ''">
+                and gtype like concat(concat('%',#{gtype}),'%')
+            </if>
+            <if test="colour!=null and colour!= ''">
+                and colour like concat(concat('%',#{colour}),'%')
+            </if>
+        </where>
+        limit #{skip},#{size}
     </select>
 
 
@@ -107,6 +119,17 @@
     <!--获得总数 -->
     <select id="getGoodsCount" resultType="int">
         select count(*) from goods
+        <where>
+            <if test="gname!=null and gname!= ''">
+                and gname like concat(concat('%',#{gname}),'%')
+            </if>
+            <if test="gtype!=null and gtype!= ''">
+                and gtype like concat(concat('%',#{gtype}),'%')
+            </if>
+            <if test="colour!=null and colour!= ''">
+                and colour like concat(concat('%',#{colour}),'%')
+            </if>
+        </where>
     </select>
 
 

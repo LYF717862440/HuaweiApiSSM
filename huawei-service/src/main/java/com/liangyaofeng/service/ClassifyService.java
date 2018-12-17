@@ -8,6 +8,8 @@ public interface ClassifyService {
 
     List<Classify> selectAllClassify();
 
+    Classify selectClassifybyid(String cid);
+
     boolean addClassify(Classify classify);
 
     boolean updateClassify(Classify classify);
@@ -16,8 +18,8 @@ public interface ClassifyService {
 
     boolean deleteClasifyBylist(List<String> cids);
 
-    List<Classify> getClassifyPager( int pageNO, int size);
+    List<Classify> getClassifyPager( int pageNO, int size,String sort,String series);
 
-    int getClassifyCount();
+    int getClassifyCount(String sort,String series);
 
 }

@@ -41,6 +41,13 @@
     </select>
 
 
+    <select id="selectuersbyid" resultType="com.liangyaofeng.entity.Users">
+        select Uid,loginId,Password,Uname,Sex,Uphone,Balance,Ubirthday,Ustate
+        from users
+        where Uid=#{uid}
+    </select>
+
+
     <!--添加-->
     <insert id="addUsers">
         insert into users(loginId,Password,Uname,Sex,Uphone,Balance,Ubirthday,Ustate)
@@ -95,7 +102,16 @@
     <!--分页 -->
     <select id="getUsersPager" resultType="com.liangyaofeng.entity.Users">
         select Uid,loginId,Password,Uname,Sex,Uphone,Balance,Ubirthday,Ustate
-        from users limit #{skip},#{size}
+        from users
+        <where>
+            <if test="loginId!=null and loginId!= ''">
+                and loginId like concat(concat('%',#{loginId}),'%')
+            </if>
+            <if test="uname!=null and uname!= ''">
+                and uname like concat(concat('%',#{uname}),'%')
+            </if>
+        </where>
+        limit #{skip},#{size}
     </select>
 
 
@@ -103,6 +119,14 @@
     <!--获得总数 -->
     <select id="getUsersCount" resultType="int">
         select count(*) from users
+        <where>
+            <if test="loginId!=null and loginId!= ''">
+                and loginId like concat(concat('%',#{loginId}),'%')
+            </if>
+            <if test="uname!=null and uname!= ''">
+                and uname like concat(concat('%',#{uname}),'%')
+            </if>
+        </where>
     </select>
 
 

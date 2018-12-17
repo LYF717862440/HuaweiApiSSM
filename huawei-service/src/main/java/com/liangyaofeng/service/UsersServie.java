@@ -18,6 +18,8 @@ public interface UsersServie {
 
     Users selectUsersbyloginId(String loginId);
 
+    Users selectuersbyid(String uid);
+
     boolean addUsers(Users users);
 
     boolean updateUsers(Users users);
@@ -27,9 +29,9 @@ public interface UsersServie {
     boolean deleteUsersbyList(List<String> loginIds);
 
 
-    List<Users> getUsersPager( int pageNO, int size);
+    List<Users> getUsersPager( int pageNO, int size,String loginId,String uname);
 
-    int getUsersCount();
+    int getUsersCount(String loginId,String uname);
 
 
 }

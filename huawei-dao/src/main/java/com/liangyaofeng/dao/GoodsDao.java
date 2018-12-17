@@ -19,9 +19,9 @@ public interface GoodsDao {
 
     boolean deletegoodsbyList(List<String> gids);
 
-    List<Goods> getGoodsPager(@Param("skip") int skip,@Param("size") int size);
+    List<Goods> getGoodsPager(@Param("skip") int skip,@Param("size") int size,@Param("gname")String gname,@Param("gtype")String gtype,@Param("colour")String colour);
 
-    int getGoodsCount();
+    int getGoodsCount(@Param("gname")String gname,@Param("gtype")String gtype,@Param("colour")String colour);
 
 
 }

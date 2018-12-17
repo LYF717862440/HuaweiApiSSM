@@ -72,7 +72,13 @@ public class GoodsDaoTest {
 
     @Test
     public void pager(){
-        System.out.println(goodsDao.getGoodsPager(3,5));
+        System.out.println(goodsDao.getGoodsPager(0,5,"荣耀","电脑","星空"));
+    }
+
+
+    @Test
+    public void count(){
+        System.out.println(goodsDao.getGoodsCount("荣耀","电脑","星空"));
     }
 
 

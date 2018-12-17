@@ -3,6 +3,7 @@ package com.liangyaofeng.service.Impl;
 import com.liangyaofeng.dao.ClassifyDao;
 import com.liangyaofeng.entity.Classify;
 import com.liangyaofeng.service.ClassifyService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,11 @@ public class ClassifyServiceImpl implements ClassifyService {
     public List<Classify> selectAllClassify() {
         List<Classify> list=classifyDao.selectAllClassify();
         return list;
+    }
+
+    public Classify selectClassifybyid(String cid) {
+        Classify classify=classifyDao.selectClassifybyid(cid);
+        return classify;
     }
 
     public boolean addClassify(Classify classify) {
@@ -39,12 +45,24 @@ public class ClassifyServiceImpl implements ClassifyService {
         return classifyDao.deleteClasifyBylist(cids);
     }
 
-    public List<Classify> getClassifyPager(int pageNO, int size) {
+    public List<Classify> getClassifyPager(int pageNO, int size,String sort,String series) {
+        if (StringUtils.isEmpty(sort)){
+            sort=null;
+        }
+        if (StringUtils.isEmpty(series)){
+            series=null;
+        }
         int skip=(pageNO-1)*size;
-        return classifyDao.getClassifyPager(skip,size);
+        return classifyDao.getClassifyPager(skip,size,sort,series);
     }
 
-    public int getClassifyCount() {
-        return classifyDao.getClassifyCount();
+    public int getClassifyCount(String sort,String series) {
+        if (StringUtils.isEmpty(sort)){
+            sort=null;
+        }
+        if (StringUtils.isEmpty(series)){
+            series=null;
+        }
+        return classifyDao.getClassifyCount(sort,series);
     }
 }

@@ -19,9 +19,9 @@ public interface GoodsService {
 
     boolean deletegoodsbyList(List<String> gids);
 
-    List<Goods> getGoodsPager(int pageNO, int size);
+    List<Goods> getGoodsPager(int pageNO, int size,String gname,String gtype,String colour);
 
-    int getGoodsCount();
+    int getGoodsCount(String gname,String gtype,String colour);
 
 
 }

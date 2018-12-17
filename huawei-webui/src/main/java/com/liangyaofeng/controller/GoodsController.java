@@ -25,14 +25,20 @@ public class GoodsController {
 
     @RequestMapping("/goodsInfopage")
     @ResponseBody
-    public R goodsInfopage(@RequestParam(defaultValue ="1")int param1,@RequestParam(defaultValue = "5")int param2){
-        return R.ok(goodsService.getGoodsPager(param1,param2));
+    public R goodsInfopage(@RequestParam(defaultValue ="1")int param1,@RequestParam(defaultValue = "5")int param2,String gname,String gtype,String colour){
+        return R.ok(goodsService.getGoodsPager(param1,param2,gname,gtype,colour));
     }
 
     @RequestMapping("/goodscount")
     @ResponseBody
-    public R goodscount(){
-        return R.ok(goodsService.getGoodsCount());
+    public R goodscount(String gname,String gtype,String colour){
+        return R.ok(goodsService.getGoodsCount(gname,gtype,colour));
+    }
+
+    @RequestMapping("/selectbyid")
+    @ResponseBody
+    public R selectbyid(String gid){
+        return  R.ok(goodsService.selectgoodsBygid(gid));
     }
 
 

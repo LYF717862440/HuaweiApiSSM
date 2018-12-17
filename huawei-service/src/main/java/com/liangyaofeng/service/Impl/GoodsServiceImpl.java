@@ -48,12 +48,30 @@ public class GoodsServiceImpl implements GoodsService{
         return goodsDao.deletegoodsbyList(gids);
     }
 
-    public List<Goods> getGoodsPager(int pageNO, int size) {
+    public List<Goods> getGoodsPager(int pageNO, int size,String gname,String gtype,String colour) {
+        if (StringUtils.isEmpty(gname)){
+            gname=null;
+        }
+        if (StringUtils.isEmpty(gtype)){
+            gtype=null;
+        }
+        if (StringUtils.isEmpty(colour)){
+            colour=null;
+        }
         int skip=(pageNO-1)*size;
-        return goodsDao.getGoodsPager(skip, size);
+        return goodsDao.getGoodsPager(skip,size,gname,gtype,colour);
     }
 
-    public int getGoodsCount() {
-        return goodsDao.getGoodsCount();
+    public int getGoodsCount(String gname,String gtype,String colour) {
+        if (StringUtils.isEmpty(gname)){
+            gname=null;
+        }
+        if (StringUtils.isEmpty(gtype)){
+            gtype=null;
+        }
+        if (StringUtils.isEmpty(colour)){
+            colour=null;
+        }
+        return goodsDao.getGoodsCount(gname, gtype, colour);
     }
 }

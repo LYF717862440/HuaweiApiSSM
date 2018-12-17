@@ -24,16 +24,22 @@ public class ClassifyController {
 
     @RequestMapping("/classifyInfopage")
     @ResponseBody
-    public R classifyInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2){
-        return R.ok(classifyService.getClassifyPager(param1,param2));
+    public R classifyInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2,String sort,String series){
+        return R.ok(classifyService.getClassifyPager(param1,param2, sort, series));
     }
 
     @RequestMapping("/classifycount")
     @ResponseBody
-    public R classifycount(){
-        return R.ok(classifyService.getClassifyCount());
+    public R classifycount(String sort,String series){
+        return R.ok(classifyService.getClassifyCount(sort,series));
     }
 
+
+    @RequestMapping("/selectbyid")
+    @ResponseBody
+    public R selectbyid(String cid){
+        return  R.ok(classifyService.selectClassifybyid(cid));
+    }
 
 
     @RequestMapping("/add")

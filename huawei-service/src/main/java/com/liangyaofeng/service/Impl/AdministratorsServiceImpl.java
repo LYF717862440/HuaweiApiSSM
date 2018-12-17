@@ -5,6 +5,7 @@ import com.liangyaofeng.dao.AdministratorsDao;
 import com.liangyaofeng.entity.Administrators;
 import com.liangyaofeng.entity.NoteResult;
 import com.liangyaofeng.service.AdministratorsService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +53,11 @@ public class AdministratorsServiceImpl implements AdministratorsService{
         return administrators;
     }
 
+    public Administrators selectAdminbyid(String aid) {
+        Administrators administrators=administratorsDao.selectAdminbyid(aid);
+        return administrators;
+    }
+
     public boolean addAdministrators(Administrators administrators) {
         return administratorsDao.addAdministrators(administrators);
     }
@@ -71,12 +77,30 @@ public class AdministratorsServiceImpl implements AdministratorsService{
         return administratorsDao.deleteadminbyList(loginIds);
     }
 
-    public List<Administrators> getAdmnPager(int pageNO, int size) {
+    public List<Administrators> getAdmnPager(int pageNO, int size,String loginId,String aname,String jop) {
+        if (StringUtils.isEmpty(loginId)){
+            loginId=null;
+        }
+        if (StringUtils.isEmpty(aname)){
+            aname=null;
+        }
+        if (StringUtils.isEmpty(jop)){
+            jop=null;
+        }
         int skip=(pageNO-1)*size;
-        return administratorsDao.getAdmnPager(skip,size);
+        return administratorsDao.getAdmnPager(skip,size,loginId,aname,jop);
     }
 
-    public int getadminCount() {
-        return administratorsDao.getadminCount();
+    public int getadminCount(String loginId,String aname,String jop) {
+        if (StringUtils.isEmpty(loginId)){
+            loginId=null;
+        }
+        if (StringUtils.isEmpty(aname)){
+            aname=null;
+        }
+        if (StringUtils.isEmpty(jop)){
+            jop=null;
+        }
+        return administratorsDao.getadminCount(loginId, aname, jop);
     }
 }

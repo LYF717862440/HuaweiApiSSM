@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="renderer" content="webkit">
     <title>登录</title>
-    <link rel="stylesheet" href="css/logocss/pintuer.css">
-    <link rel="stylesheet" href="css/logocss/admin.css">
-    <script src="js/logojs/jquery.js"></script>
-    <script src="js/logojs/pintuer.js"></script>
+    <link rel="stylesheet" href="CSS/logocss/pintuer.css">
+    <link rel="stylesheet" href="CSS/logocss/admin.css">
+    <script src="JS/logojs/jquery.js"></script>
+    <script src="JS/logojs/pintuer.js"></script>
 </head>
 <body>
 <div class="bg"></div>
@@ -52,7 +52,7 @@
 </div>
 
 
-<script src="js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="JS/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
 
@@ -84,7 +84,7 @@
             if(ok){
                 //发送Ajax请求
                 $.ajax({
-                    url:"http://localhost:8080/admin/checklogin",
+                    url:"admin/checklogin",
                     type:"post",
                     data:{"loginId":loginId,"password":password},
                     dataType:"json",
@@ -95,7 +95,7 @@
                             // addCookie("uid",username,4);//存储2小时
                             alert("登录成功");
                             sessionStorage.setItem("loginId",loginId);
-                            window.location.href = "http://localhost:8020/huaweibackstage/index-2.html";
+                            window.location.href = "index.html";
                         }else if (result.status==1){  //用户名不存在
                             // $("#spanloginId").html(result.msg);
                             alert(result.msg);

@@ -15,6 +15,8 @@ public interface AdministratorsService {
 
     Administrators selectAllbyloginId(String loginId);
 
+    Administrators selectAdminbyid(String aid);
+
     boolean addAdministrators(Administrators administrators);
 
     boolean deleteAdministrators(String loginId);
@@ -23,9 +25,9 @@ public interface AdministratorsService {
 
     boolean deleteadminbyList(List<String> loginIds);
 
-    List<Administrators> getAdmnPager( int pageNO, int size);
+    List<Administrators> getAdmnPager( int pageNO, int size,String loginId,String aname,String jop);
 
-    int getadminCount();
+    int getadminCount(String loginId,String aname,String jop);
 
 
 }

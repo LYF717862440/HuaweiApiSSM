@@ -13,6 +13,8 @@ public interface UsersDao {
 
     Users selectUsersbyloginId(@Param("loginId") String loginId);
 
+    Users selectuersbyid(@Param("uid")String uid);
+
     boolean addUsers(Users users);
 
     boolean updateUsers(Users users);
@@ -21,9 +23,9 @@ public interface UsersDao {
 
     boolean deleteUsersbyList(List<String> loginIds);
 
-    List<Users> getUsersPager(@Param("skip") int skip,@Param("size") int size);
+    List<Users> getUsersPager(@Param("skip") int skip,@Param("size") int size,@Param("loginId")String loginId,@Param("uname")String uname);
 
-    int getUsersCount();
+    int getUsersCount(@Param("loginId")String loginId,@Param("uname")String uname);
 
 
 

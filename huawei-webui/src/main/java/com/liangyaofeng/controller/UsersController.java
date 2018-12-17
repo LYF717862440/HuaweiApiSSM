@@ -24,17 +24,22 @@ public class UsersController {
 
     @RequestMapping("/usersInfopage")
     @ResponseBody
-    public R usersInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2){
-        return R.ok(usersServie.getUsersPager(param1,param2));
+    public R usersInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2,String loginId,String uname){
+        return R.ok(usersServie.getUsersPager(param1,param2,loginId,uname));
     }
 
     @RequestMapping("/userscount")
     @ResponseBody
-    public R userscount(){
-        return R.ok(usersServie.getUsersCount());
+    public R userscount(String loginId,String uname){
+        return R.ok(usersServie.getUsersCount( loginId, uname));
     }
 
 
+    @RequestMapping("/selectbyid")
+    @ResponseBody
+    public R selectbyid(String uid){
+        return  R.ok(usersServie.selectuersbyid(uid));
+    }
 
 
     @RequestMapping("/add")

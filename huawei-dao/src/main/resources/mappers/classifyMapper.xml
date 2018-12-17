@@ -8,6 +8,10 @@
         select cid,Sort,Series from classify
     </select>
 
+    <select id="selectClassifybyid" resultType="com.liangyaofeng.entity.Classify">
+        select * from from classify where cid=#{cid}
+    </select>
+
     <!--添加-->
     <insert id="addClassify">
         insert into classify(cid,Sort,Series) values(#{cid},#{sort},#{series})
@@ -45,7 +49,16 @@
 
     <!--分页 -->
     <select id="getClassifyPager" resultType="com.liangyaofeng.entity.Classify">
-        select cid,Sort,Series from classify limit #{skip},#{size}
+        select cid,Sort,Series from classify
+        <where>
+            <if test="sort!=null and sort!= ''">
+                and sort like concat(concat('%',#{sort}),'%')
+            </if>
+            <if test="series!=null and series!= ''">
+                and series like concat(concat('%',#{series}),'%')
+            </if>
+        </where>
+        limit #{skip},#{size}
     </select>
 
 
@@ -53,6 +66,14 @@
     <!--获得总数 -->
     <select id="getClassifyCount" resultType="int">
         select count(*) from classify
+        <where>
+            <if test="sort!=null and sort!= ''">
+                and sort like concat(concat('%',#{sort}),'%')
+            </if>
+            <if test="series!=null and series!= ''">
+                and series like concat(concat('%',#{series}),'%')
+            </if>
+        </where>
     </select>
 
 

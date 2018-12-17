@@ -65,6 +65,11 @@ public class UsersServiceImpl implements UsersServie {
         return users;
     }
 
+    public Users selectuersbyid(String uid) {
+        Users users=usersDao.selectuersbyid(uid);
+        return users;
+    }
+
     public boolean addUsers(Users users) {
         return usersDao.addUsers(users);
     }
@@ -86,12 +91,24 @@ public class UsersServiceImpl implements UsersServie {
         return usersDao.deleteUsersbyList(loginIds);
     }
 
-    public List<Users> getUsersPager(int pageNO, int size) {
+    public List<Users> getUsersPager(int pageNO, int size,String loginId,String uname) {
+        if (StringUtils.isEmpty(loginId)){
+            loginId=null;
+        }
+        if (StringUtils.isEmpty(uname)){
+            uname=null;
+        }
         int skip=(pageNO-1)*size;
-        return usersDao.getUsersPager(skip,size);
+        return usersDao.getUsersPager(skip,size,loginId,uname);
     }
 
-    public int getUsersCount() {
-        return usersDao.getUsersCount();
+    public int getUsersCount(String loginId,String uname) {
+        if (StringUtils.isEmpty(loginId)){
+            loginId=null;
+        }
+        if (StringUtils.isEmpty(uname)){
+            uname=null;
+        }
+        return usersDao.getUsersCount(loginId,uname);
     }
 }
