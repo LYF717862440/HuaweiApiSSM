@@ -34,44 +34,56 @@
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>账号：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text" value="" placeholder="" id="loginId" name="loginId">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">密码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="" name="">
+				<input type="text" class="input-text" value="" placeholder="" id="password" name="password">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">姓名：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="" id="" placeholder="" value="" class="input-text">
+				<input type="text" name="uname" id="uname" placeholder="" value="" class="input-text">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">性别：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="" id="" placeholder="" value="" class="input-text">
+				<input type="text" name="sex" id="sex" placeholder="" value="" class="input-text">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">电话号码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="" id="" placeholder="" value="" class="input-text">
+				<input type="text" name="uphone" id="uphone" placeholder="" value="" class="input-text">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-2">余额：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" name="balance" id="balance" placeholder="" value="" class="input-text">
 			</div>
 		</div>
 		<div class="row cl">
 			<label class="form-label col-xs-4 col-sm-2">生日：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="" id="" placeholder="" value="" class="input-text" style="width:90%">
+				<input type="text" name="ubirthday" id="ubirthday" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
-				<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			<label class="form-label col-xs-4 col-sm-2">状态：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" name="ustate" id="ustate" placeholder="" value="" class="input-text" style="width:90%">
+			</div>
+		</div>
+		<div class="row cl">
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2" id="btn">
+				<!--<button onClick="article_save_submit();" class="btn btn-primary radius" type="submit"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>-->
+				<!--<button onClick="article_save();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>-->
+				<!--<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>-->
 			</div>
 		</div>
 	</form>
@@ -93,6 +105,104 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
+
+
+    var url = location.search;
+    if(url == "" || url == null) {
+        $("#btn").append("<button onClick='add();' class='btn btn-primary radius' type='button'><i class='Hui-iconfont'>&#xe632;</i> 添加</button>&nbsp;&nbsp;&nbsp;<button onClick='layer_close();' class='btn btn-default radius' type='button'>&nbsp;&nbsp;取消&nbsp;&nbsp;</button>");
+    } else {
+        $("#btn").append("<button onClick='update();' class='btn btn-primary radius' type='button'><i class='Hui-iconfont'>&#xe632;</i> 修改</buttton>&nbsp;&nbsp;&nbsp;<button onClick='layer_close();' class='btn btn-default radius' type='button'>&nbsp;&nbsp;取消&nbsp;&nbsp;</button>");
+        // $("#cId").attr("readonly","readonly").css("cursor","not-allowed");
+    }
+
+
+
+
+    edit();
+    function edit(){
+        var uid = location.search;
+        // alert(uid.substring(5));
+        $.ajax({
+            url: "users/selectbyid",
+            data:{uid:uid.substring(5)},
+            success: function(data) {
+                if(data.code == 1) {
+                    $("#loginId").val(data.data.loginId);
+                    $("#password").val(data.data.password);
+                    $("#uname").val(data.data.uname);
+                    $("#sex").val(data.data.sex);
+                    $("#uphone").val(data.data.uphone);
+                    $("#balance").val(data.data.balance);
+                    $("#ubirthday").val(data.data.ubirthday);
+                    $("#ustate").val(data.data.ustate);
+                }
+            }
+        })
+    }
+
+
+    function update(){
+        var loginId=$("#loginId").val();
+        var password=$("#password").val();
+        var uname=$("#uname").val();
+        var sex=$("#sex").val();
+        var uphone=$("#uphone").val();
+        var balance=$("#balance").val();
+        var ubirthday=$("#ubirthday").val();
+        var ustate=$("#ustate").val();
+
+        $.ajax({
+            url: "users/update",
+            data: {loginId:loginId,password:password,uname:uname,sex:sex,
+                uphone:uphone,balance:balance,ubirthday:ubirthday,ustate:ustate},
+            success: function(data) {
+                if(data.code==1){
+                    alert("修改成功");
+                    layer.msg('已修改!',{icon:1,time:2000});
+                    // window.location.href='users-list.html';
+					layer_close();
+                }else{
+                    layer.msg('修改失败!',{icon:1,time:2000});
+                }
+            }
+        })
+    }
+
+
+    function add(){
+        var loginId=$("#loginId").val();
+        var password=$("#password").val();
+        var uname=$("#uname").val();
+        var sex=$("#sex").val();
+        var uphone=$("#uphone").val();
+        var balance=$("#balance").val();
+        var ubirthday=$("#ubirthday").val();
+        var ustate=$("#ustate").val();
+
+        $.ajax({
+            url: "users/add",
+            data: {loginId:loginId,password:password,uname:uname,sex:sex,
+                uphone:uphone,balance:balance,ubirthday:ubirthday,ustate:ustate},
+            success: function(data) {
+                if(data.code == 1) {
+                    alert("添加成功");
+                    layer.msg('已添加!',{icon:1,time:2000});
+                    // window.location.href='users-list.html';
+                    layer_close();
+                }else{
+                    layer.msg('添加失败!',{icon:1,time:2000});
+                }
+            }
+        })
+    }
+
+
+
+
+
+
+
+
 $(function(){
 	$('.skin-minimal input').iCheck({
 		checkboxClass: 'icheckbox-blue',

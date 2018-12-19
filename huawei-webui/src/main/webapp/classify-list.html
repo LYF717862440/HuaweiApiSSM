@@ -81,7 +81,7 @@
         var sort=$("#sort").val();
         var series=$("#series").val();
         $.ajax({
-            url: "http://localhost:8080/classify/classifycount",
+            url: "classify/classifycount",
             data: {sort:sort,series:series},
             success: function(data) {
                 $("#count").html(data.data);
@@ -96,7 +96,7 @@
                         count:data.data ,
                         jump:function (obj) {
                             $.ajax({
-                                url:"http://localhost:8080/classify/classifyInfopage",
+                                url:"classify/classifyInfopage",
                                 data:{param1:obj.curr,param2:obj.limit,sort:sort,series:series},
                                 success:function (data) {
                                     if(data.code==1){
@@ -240,21 +240,22 @@ function product_edit(title,url,id){
 	var index = layer.open({
 		type: 2,
 		title: title,
-		content: url
+		content: "classify-add.html?cid="+id
 	});
 	layer.full(index);
 }
 
 /*产品-删除*/
-function product_del(obj,id){
+function product_del(obj,cid){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: 'classify/delete',
+			data:{cid:cid},
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();
-				layer.msg('已删除!',{icon:1,time:1000});
+				layer.msg('已删除!',{icon:1,time:2000});
 			},
 			error:function(data) {
 				console.log(data.msg);

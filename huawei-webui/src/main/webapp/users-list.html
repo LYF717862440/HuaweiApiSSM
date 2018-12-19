@@ -132,7 +132,7 @@
                                             tr.append(td8);
 
                                             var td9=$("<td class='td-manage'/>");
-                                            var btn1 = $("<a style='text-decoration:none' onClick='product_stop(this,"+obj.loginId+")' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='product_edit(\"用户编辑\",\"users-add.html\","+obj.loginId+")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a title='删除' href='javascript:;' onclick='product_del(this,"+obj.loginId+")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a>").appendTo(td9);
+                                            var btn1 = $("<a style='text-decoration:none' onClick='product_stop(this,"+obj.loginId+")' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='product_edit(\"用户编辑\",\"users-add.html\","+obj.uid+")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a title='删除' href='javascript:;' onclick='product_del(this,"+obj.uid+")' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a>").appendTo(td9);
                                             tr.append(td9);
 
                                             $("#listusers").append(tr);
@@ -192,7 +192,7 @@ function product_add(title,url){
 	var index = layer.open({
 		type: 2,
 		title: title,
-		content: url
+		content: "users-add.html"
 	});
 	layer.full(index);
 }
@@ -256,17 +256,18 @@ function product_edit(title,url,id){
 	var index = layer.open({
 		type: 2,
 		title: title,
-		content: url
+		content: "users-add.html?uid="+id
 	});
 	layer.full(index);
 }
 
 /*产品-删除*/
-function product_del(obj,id){
+function product_del(obj,loginId){
 	layer.confirm('确认要删除吗？',function(index){
 		$.ajax({
 			type: 'POST',
-			url: '',
+			url: 'users/delete',
+			data:{loginId:loginId},
 			dataType: 'json',
 			success: function(data){
 				$(obj).parents("tr").remove();

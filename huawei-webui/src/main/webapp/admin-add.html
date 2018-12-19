@@ -99,6 +99,25 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
+
+
+	function update(){
+        $.ajax({
+            url: "admin/selectbyid",
+            data: {cid:cid},
+            success: function(data) {
+                if(data.code == 1) {
+
+
+                }
+            }
+        })
+	}
+
+
+
+
+
 $(function(){
 	$('.skin-minimal input').iCheck({
 		checkboxClass: 'icheckbox-blue',

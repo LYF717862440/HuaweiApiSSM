@@ -9,7 +9,7 @@
     </select>
 
     <select id="selectClassifybyid" resultType="com.liangyaofeng.entity.Classify">
-        select * from from classify where cid=#{cid}
+        select * from classify where cid=#{cid}
     </select>
 
     <!--添加-->
@@ -29,6 +29,7 @@
                 Series=#{series},
             </if>
         </set>
+        where cid=#{cid}
     </update>
 
 

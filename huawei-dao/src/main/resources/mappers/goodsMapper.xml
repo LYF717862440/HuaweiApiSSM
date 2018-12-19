@@ -20,7 +20,7 @@
         select gid,cid,Gname,Gimg,Gtype,Gprice,Gexplain,Gcoding,Colour,
         Versions,Details,Stock,Gstate,Loadingtime,Aid
         from goods
-        where Gid=#{gid}
+        where gid=#{gid}
     </select>
 
     <!--添加-->

@@ -122,10 +122,10 @@
 
 		</div>
 		<div class="row cl">
-			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
-				<button onclick="add()" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>
-				<button onClick="add();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>
-				<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2" id="btn">
+				<!--<button onclick="add()" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>-->
+				<!--<button onClick="update();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>-->
+				<!--<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>-->
 			</div>
 		</div>
 	</form>
@@ -147,6 +147,124 @@
 <script type="text/javascript" src="lib/ueditor/1.4.3/ueditor.all.min.js"> </script>
 <script type="text/javascript" src="lib/ueditor/1.4.3/lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
+
+
+    var url = location.search;
+    if(url == "" || url == null) {
+        $("#btn").append("<button onClick='add();' class='btn btn-primary radius' type='button'><i class='Hui-iconfont'>&#xe632;</i> 添加</button>&nbsp;&nbsp;&nbsp;<button onClick='layer_close();' class='btn btn-default radius' type='button'>&nbsp;&nbsp;取消&nbsp;&nbsp;</button>");
+    } else {
+        $("#btn").append("<button onClick='update();' class='btn btn-primary radius' type='button'><i class='Hui-iconfont'>&#xe632;</i> 修改</buttton>&nbsp;&nbsp;&nbsp;<button onClick='layer_close();' class='btn btn-default radius' type='button'>&nbsp;&nbsp;取消&nbsp;&nbsp;</button>");
+        $("#cId").attr("readonly","readonly").css("cursor","not-allowed");
+    }
+
+
+    editgoods();
+    function editgoods(){
+        var gid = location.search;
+		// alert(gid.substring(5));
+        $.ajax({
+            url: "goods/selectbyid",
+            data: {gid:gid.substring(5)},
+            success: function(data) {
+                if(data.code == 1) {
+                    // console.log(data.data);
+                    // alert(data.data.colour);
+                    $("#gid").val(data.data.gid);
+                    $("#gname").val(data.data.gname);
+                    $("#cid").val(data.data.cid);
+                    $("#gtype").val(data.data.gtype);
+                    $("#gexplain").val(data.data.gexplain);
+                    $("#gprice").val(data.data.gprice);
+                    $("#gcoding").val(data.data.gcoding);
+                    $("#colour").val(data.data.colour);
+                    $("#versions").val(data.data.versions);
+                    $("#stock").val(data.data.stock);
+                    $("#gstate").val(data.data.gstate);
+                    $("#aid").val(data.data.aid);
+                    $("#details").val(data.data.details);
+                    $("#gimg").val(data.data.gimg);
+                }
+            }
+        })
+    }
+
+
+
+
+    function add(){
+        var gid=$("#gid").val();
+        var gname=$("#gname").val();
+        var cid=$("#cid").val();
+        var gtype=$("#gtype").val();
+        var gexplain=$("#gexplain").val();
+        var gprice=$("#gprice").val();
+        var gcoding=$("#gcoding").val();
+        var colour=$("#colour").val();
+        var versions=$("#versions").val();
+        var stock=$("#stock").val();
+        var gstate=$("#gstate").val();
+        var aid=$("#aid").val();
+        var details=$("#details").val();
+        var gimg=$("#gimg").val();
+
+        $.ajax({
+            url: "goods/add",
+            data: {gid:gid,gname:gname,cid:cid,gtype:gtype,gexplain:gexplain,gprice:gprice,gcoding:gcoding,
+                colour:colour,versions:versions,stock:stock,gstate:gstate,
+                aid:aid,details:details,gimg:gimg},
+			success: function(data) {
+				if(data.code==1){
+					// alert("添加成功");
+					layer.msg('已添加!',{icon:1,time:2000});
+                    // window.location.href='goods-list.html';
+					layer_close();
+				}else{
+					layer.msg('修改失败!',{icon:1,time:2000});
+				}
+				}
+        })
+    }
+
+
+    function update(){
+        var gid=$("#gid").val();
+        var gname=$("#gname").val();
+        var cid=$("#cid").val();
+        var gtype=$("#gtype").val();
+        var gexplain=$("#gexplain").val();
+        var gprice=$("#gprice").val();
+        var gcoding=$("#gcoding").val();
+        var colour=$("#colour").val();
+        var versions=$("#versions").val();
+        var stock=$("#stock").val();
+        var gstate=$("#gstate").val();
+        var aid=$("#aid").val();
+        var details=$("#details").val();
+        var gimg=$("#gimg").val();
+
+        $.ajax({
+            url: "goods/update",
+            data: {gid:gid,gname:gname,cid:cid,gtype:gtype,gexplain:gexplain,gprice:gprice,gcoding:gcoding,
+                colour:colour,versions:versions,stock:stock,gstate:gstate,
+                aid:aid,details:details,gimg:gimg},
+            success: function(data) {
+                if(data.code==1){
+                    layer.msg('已修改!',{icon:1,time:2000});
+                    // window.location.href='goods-list.html';
+                    layer_close();
+                }else{
+                    layer.msg('修改失败!',{icon:1,time:2000});
+                }
+            }
+        })
+    }
+
+
+
+
+
+
+
 $(function(){
 	$('.skin-minimal input').iCheck({
 		checkboxClass: 'icheckbox-blue',

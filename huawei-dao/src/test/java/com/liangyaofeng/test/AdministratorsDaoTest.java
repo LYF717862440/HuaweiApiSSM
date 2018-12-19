@@ -34,6 +34,12 @@ public class AdministratorsDaoTest {
     }
 
 
+    @Test
+    public void page(){
+        System.out.println(administratorsDao.getadminCount("","",""));
+    }
+
+
 
 
 
