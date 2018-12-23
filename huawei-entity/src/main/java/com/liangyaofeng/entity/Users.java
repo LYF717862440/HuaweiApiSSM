@@ -2,6 +2,7 @@ package com.liangyaofeng.entity;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Users implements Serializable {
 
@@ -12,7 +13,7 @@ public class Users implements Serializable {
   private String sex;
   private String uphone;
   private double balance;
-  private java.sql.Timestamp ubirthday;
+  private Date ubirthday;
   private String ustate;
 
 
@@ -79,11 +80,11 @@ public class Users implements Serializable {
   }
 
 
-  public java.sql.Timestamp getUbirthday() {
+  public Date getUbirthday() {
     return ubirthday;
   }
 
-  public void setUbirthday(java.sql.Timestamp ubirthday) {
+  public void setUbirthday(Date ubirthday) {
     this.ubirthday = ubirthday;
   }
 

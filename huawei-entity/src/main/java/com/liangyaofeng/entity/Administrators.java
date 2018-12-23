@@ -2,6 +2,7 @@ package com.liangyaofeng.entity;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Administrators implements Serializable {
 
@@ -12,7 +13,7 @@ public class Administrators implements Serializable {
   private String asex;
   private String jop;
   private String aphone;
-  private java.sql.Timestamp abirthday;
+  private Date abirthday;
   private String astate;
 
 
@@ -79,11 +80,11 @@ public class Administrators implements Serializable {
   }
 
 
-  public java.sql.Timestamp getAbirthday() {
+  public Date getAbirthday() {
     return abirthday;
   }
 
-  public void setAbirthday(java.sql.Timestamp abirthday) {
+  public void setAbirthday(Date abirthday) {
     this.abirthday = abirthday;
   }
 

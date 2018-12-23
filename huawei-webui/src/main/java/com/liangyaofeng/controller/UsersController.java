@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.xml.crypto.Data;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -44,7 +49,32 @@ public class UsersController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public R add(Users users){
+    public R add(HttpServletRequest request){
+        String loginId=request.getParameter("loginId");
+        String password=request.getParameter("password");
+        String uname=request.getParameter("uname");
+        String sex=request.getParameter("sex");
+        String uphone=request.getParameter("uphone");
+        Double balance=Double.parseDouble(request.getParameter("balance"));
+
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String ubirthday=request.getParameter("ubirthday");
+
+        String ustate=request.getParameter("ustate");
+
+        Date date = new Date();
+//        Timestamp ts = new Timestamp(ubirthday);
+
+        Users users=new Users();
+        users.setLoginId(loginId);
+        users.setPassword(password);
+        users.setUname(uname);
+        users.setSex(sex);
+        users.setUphone(uphone);
+        users.setBalance(balance);
+//        users.getUbirthday(ts);
+        users.setUstate(ustate);
         return  R.ok(usersServie.addUsers(users));
     }
 

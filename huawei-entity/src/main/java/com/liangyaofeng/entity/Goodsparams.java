@@ -2,12 +2,13 @@ package com.liangyaofeng.entity;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Goodsparams implements Serializable {
 
   private String gcoding;
   private String brand;
-  private java.sql.Timestamp ttm;
+  private Date ttm;
   private String cpUtype;
   private String cpuAudit;
   private String audroid;
@@ -40,11 +41,11 @@ public class Goodsparams implements Serializable {
   }
 
 
-  public java.sql.Timestamp getTtm() {
+  public Date getTtm() {
     return ttm;
   }
 
-  public void setTtm(java.sql.Timestamp ttm) {
+  public void setTtm(Date ttm) {
     this.ttm = ttm;
   }
 

@@ -2,6 +2,7 @@ package com.liangyaofeng.entity;
 
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Goods implements Serializable {
 
@@ -18,7 +19,7 @@ public class Goods implements Serializable {
   private String details;
   private long stock;
   private String gstate;
-  private java.sql.Timestamp loadingtime;
+  private Date loadingtime;
   private long aid;
 
 
@@ -139,11 +140,11 @@ public class Goods implements Serializable {
   }
 
 
-  public java.sql.Timestamp getLoadingtime() {
+  public Date getLoadingtime() {
     return loadingtime;
   }
 
-  public void setLoadingtime(java.sql.Timestamp loadingtime) {
+  public void setLoadingtime(Date loadingtime) {
     this.loadingtime = loadingtime;
   }
 
