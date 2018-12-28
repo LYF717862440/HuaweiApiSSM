@@ -92,10 +92,28 @@
                         //result是服务器返回的json结果
                         if(result.status==0){  //登录成功
                             var username = result.data;
-                            // addCookie("uid",username,4);//存储2小时
                             alert("登录成功");
                             sessionStorage.setItem("loginId",loginId);
-                            window.location.href = "index.html";
+                            // alert(loginId);
+
+                            $.ajax({
+                                url:"admin/selectbyloginId",
+                                type:"post",
+                                data:{loginId:loginId},
+                                dataType:"json",
+                                success:function(result){
+                                    alert("登录成功，存储loginId成功");
+                                    alert(result.data.aid);
+                                    sessionStorage.setItem("aid",result.data.aid);
+
+                                    window.location.href = "index.html";
+                                },
+                                error:function () {
+                                    alert("登录OK，存储loginId失败")
+                                }
+                            });
+
+                            // window.location.href = "index.html";
                         }else if (result.status==1){  //用户名不存在
                             // $("#spanloginId").html(result.msg);
                             alert(result.msg);

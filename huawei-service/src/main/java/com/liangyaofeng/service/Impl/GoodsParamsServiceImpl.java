@@ -4,6 +4,7 @@ import com.liangyaofeng.dao.GoodsDao;
 import com.liangyaofeng.dao.GoodsParamsDao;
 import com.liangyaofeng.entity.Goodsparams;
 import com.liangyaofeng.service.GoodsParamsService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,12 +45,31 @@ public class GoodsParamsServiceImpl implements GoodsParamsService {
         return false;
     }
 
-    public List<Goodsparams> getGoodsParamsPager(int pageNO, int size) {
+
+    public List<Goodsparams> getGoodsParamsPager(int pageNO, int size,String brand,String cpuaudit,String screensize) {
+        if (StringUtils.isEmpty(brand)){
+            brand=null;
+        }
+        if (StringUtils.isEmpty(cpuaudit)){
+            cpuaudit=null;
+        }
+        if (StringUtils.isEmpty(screensize)){
+            screensize=null;
+        }
         int skip=(pageNO-1)*size;
-        return goodsParamsDao.getGoodsParamsPager(skip,size);
+        return goodsParamsDao.getGoodsParamsPager(skip,size,brand,cpuaudit,screensize);
     }
 
-    public int getGoodsParamsCount() {
-        return goodsParamsDao.getGoodsParamsCount();
+    public int getGoodsParamsCount(String brand,String cpuaudit,String screensize) {
+        if (StringUtils.isEmpty(brand)){
+            brand=null;
+        }
+        if (StringUtils.isEmpty(cpuaudit)){
+            cpuaudit=null;
+        }
+        if (StringUtils.isEmpty(screensize)){
+            screensize=null;
+        }
+        return goodsParamsDao.getGoodsParamsCount(brand,cpuaudit,screensize);
     }
 }

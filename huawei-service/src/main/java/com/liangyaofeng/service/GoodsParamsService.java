@@ -25,9 +25,9 @@ public interface GoodsParamsService {
     boolean deletegoodsbyList(List<String> gcodings);
 
 
-    List<Goodsparams> getGoodsParamsPager(int pageNO, int size);
+    List<Goodsparams> getGoodsParamsPager(int pageNO, int size, String brand,String cpuaudit,String screensize);
 
-    int getGoodsParamsCount();
+    int getGoodsParamsCount(String brand,String cpuaudit,String screensize);
 
 
 }

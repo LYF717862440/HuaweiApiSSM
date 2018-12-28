@@ -24,14 +24,21 @@ public class GoodsParamsController {
 
     @RequestMapping("/goodsparamsInfopage")
     @ResponseBody
-    public R goodsparamsInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2){
-        return R.ok(goodsParamsService.getGoodsParamsPager(param1,param2));
+    public R goodsparamsInfopage(@RequestParam(defaultValue ="1")int param1, @RequestParam(defaultValue = "5")int param2,String brand,String cpuaudit,String screensize){
+        return R.ok(goodsParamsService.getGoodsParamsPager(param1,param2,brand,cpuaudit,screensize));
     }
 
     @RequestMapping("/goodsparamscount")
     @ResponseBody
-    public R goodsparamscount(){
-        return R.ok(goodsParamsService.getGoodsParamsCount());
+    public R goodsparamscount(String brand,String cpuaudit,String screensize){
+        return R.ok(goodsParamsService.getGoodsParamsCount(brand,cpuaudit,screensize));
+    }
+
+
+    @RequestMapping("/selectbyid")
+    @ResponseBody
+    public R selectbyid(String gcoding){
+        return  R.ok(goodsParamsService.selectGoodsParamsbygcoding(gcoding));
     }
 
 

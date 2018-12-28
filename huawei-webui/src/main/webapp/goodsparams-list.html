@@ -1,0 +1,233 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="renderer" content="webkit|ie-comp|ie-stand">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta http-equiv="Cache-Control" content="no-siteapp" />
+	<link rel="Bookmark" href="/favicon.ico">
+	<link rel="Shortcut Icon" href="/favicon.ico" />
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="lib/html5shiv.js"></script>
+	<script type="text/javascript" src="lib/respond.min.js"></script>
+	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="static/h-ui/css/H-ui.min.css" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/H-ui.admin.css" />
+	<link rel="stylesheet" type="text/css" href="lib/Hui-iconfont/1.0.8/iconfont.css" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/skin/default/skin.css" id="skin" />
+	<link rel="stylesheet" type="text/css" href="static/h-ui.admin/css/style.css" />
+	<!--[if IE 6]>
+	<script type="text/javascript" src="lib/DD_belatedPNG_0.0.8a-min.js" ></script>
+	<script>DD_belatedPNG.fix('*');</script>
+	<![endif]-->
+	<title>管理员列表</title>
+	<style type="text/css">
+		.txtstyle {
+			width: 120px;
+			height: 31px;
+		}
+		/*.class{*/
+			/*width: 100%;*/
+			/*height: 600px;*/
+			/*background: red;*/
+		/*}*/
+		/*.divleft{*/
+			/*display:inline-block;*/
+			/*width: 100px;*/
+			/*height: 600px;*/
+			/*background: pink;*/
+		/*}*/
+		/*.divright{*/
+			/*display: inline-block;*/
+			/*width: 600px;*/
+			/*height: 600px;*/
+			/*background: blue;*/
+		/*}*/
+	</style>
+</head>
+
+<body>
+	<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i><span class="c-gray en"></span>参数管理 <span class="c-gray en">&gt;</span>参数列表
+		<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a>
+	</nav>
+	<div class="page-container">
+		<div class="text-c">
+			<!--brand,cpuaudit,screensize-->
+			<!--<label for="brand">商品名称：</label><input type="text" class="input-text" style="width:250px" id="brand" name="brand" />-->
+			<!--<label for="cpuaudit">CPU型号：</label><input type="text" class="input-text" style="width:250px" id="cpuaudit" name="cpuaudit" />-->
+			<!--<label for="screensize">屏幕尺寸：</label><input type="text" class="input-text" style="width:250px" id="screensize" name="screensize" />-->
+			<!--<button type="submit" class="btn btn-success" onclick="" id="btnselect" name="btnselect"><i class="Hui-iconfont">&#xe665;</i> 搜索</button>-->
+		</div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"> <a href="javascript:;" onclick="admin_add('添加商品参数','goodsparams-add.html','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加商品参数</a> <a href="javascript:;" onclick="admin_add('编辑商品参数','goodsparams-add.html','800','500')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe6df;</i> 编辑商品参数</a></span> <span class="r">共有数据：<strong id="count"></strong> 条</span> </div>
+		<div class="mt-20">
+		<table class="table table-border table-bordered table-bg table-hover table-sort">
+			<thead>
+				<tr>
+					<th scope="col" colspan="14">商品列表</th>
+				</tr>
+				<tr class="text-c">
+					<th width="40">商品编码</th>
+					<th width="80">品牌</th>
+					<th width="60">CPU型号</th>
+					<th width="50">CPU核数</th>
+					<th width="60">屏幕尺寸</th>
+					<th width="80">屏幕色彩</th>
+					<th width="40">分辨率</th>
+					<th width="60">运行内存</th>
+					<th width="60">存储容量</th>
+					<th width="60">前置摄像头</th>
+					<th width="60">后置摄像头</th>
+					<th width="60">电池容量</th>
+					<th width="60">系统</th>
+					<th width="60">上市时间</th>
+				</tr>
+			</thead>
+			<tbody id="listgoodsparams">
+
+			</tbody>
+		</table>
+
+			<!--<div class="divshowgoodsparams">-->
+				<!--<div class="divleft">-->
+
+				<!--</div>-->
+				<!--<div class="divright">-->
+
+				<!--</div>-->
+
+
+			<!--</div>-->
+		</div>
+	</div>
+
+	<!--<div id="demo0" style="text-align: center;"></div>-->
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="static/h-ui/js/H-ui.min.js"></script>
+<script type="text/javascript" src="static/h-ui.admin/js/H-ui.admin.js"></script>
+<!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<link rel="stylesheet" type="text/css" href="css/dialog.css" />
+<script src="js/dialog-min.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="dist/css/layui.css" />
+<script src="dist/layui.all.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript" src="lib/zTree/v3/js/jquery.ztree.all-3.5.min.js"></script>
+<script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
+<script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript">
+
+	showpager();
+	function showpager() {
+        var gcoding = location.search;
+        // alert(gcoding.substring(9));
+		$.ajax({
+			url: "goodsparams/selectbyid",
+			data: {gcoding:gcoding.substring(9)},
+			success: function(data) {
+				if(data.code == 1) {
+
+				    var tr=$("<tr >");
+
+                    var td1 = $("<td/>").html(data.data.gcoding);
+                    tr.append(td1);
+
+                    var td2 = $("<td/>").html(data.data.brand);
+                    tr.append(td2);
+
+                    var td3 = $("<td/>").html(data.data.cpUtype);
+                    tr.append(td3);
+
+                    var td4 = $("<td/>").html(data.data.cpuAudit);
+                    tr.append(td4);
+
+                    var td5 = $("<td/>").html(data.data.screenSize);
+                    tr.append(td5);
+
+                    var td6 = $("<td/>").html(data.data.screenColor);
+                    tr.append(td6);
+
+                    var td7 = $("<td/>").html(data.data.dpi);
+                    tr.append(td7);
+
+                    var td8 = $("<td/>").html(data.data.ram);
+                    tr.append(td8);
+
+                    var td9 = $("<td/>").html(data.data.gb);
+                    tr.append(td9);
+
+                    var td10 = $("<td/>").html(data.data.hdFront);
+                    tr.append(td10);
+
+                    var td11 = $("<td/>").html(data.data.rearCamera);
+                    tr.append(td11);
+
+                    var td12 = $("<td/>").html(data.data.nah);
+                    tr.append(td12);
+
+                    var td13 = $("<td/>").html(data.data.psystem);
+                    tr.append(td13);
+
+                    var td14 = $("<td/>").html(data.data.ttm);
+                    tr.append(td14);
+
+                    $("#listgoodsparams").append(tr);
+
+
+				}
+			},
+			error:function () {
+				alert("加载失败");
+            }
+		})
+	}
+
+
+	/*管理员-增加*/
+	function admin_add(title, url, w, h) {
+		// var index = layer.open({
+		// type: 2,
+		// title: title,
+		// content: "goods-add.html"
+		// });
+		layer_show(title, url, w, h);
+	}
+
+	/*管理员-删除*/
+	function admin_del(obj, gid) {
+		layer.confirm('确认要删除吗？', function(index) {
+			$.ajax({
+				type: 'POST',
+				url: 'http://localhost:8080/goods/delete',
+				dataType: 'json',
+				data: {
+					gid: gid
+				},
+				success: function(data) {
+					$(obj).parents("tr").remove();
+					layer.msg('已删除!', {
+						icon: 1,
+						time: 1000
+					});
+				},
+				error: function(data) {
+					console.log(data.msg);
+				},
+			});
+		});
+	}
+
+	/*管理员-编辑*/
+	function admin_edit(title, url, id, w, h) {
+
+		layer_show(title, url, w, h);
+
+	}
+</script>
+</body>
+</html>

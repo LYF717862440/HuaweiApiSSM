@@ -1,6 +1,7 @@
 package com.liangyaofeng.dao;
 
 import com.liangyaofeng.entity.Goods;
+import com.liangyaofeng.entity.GoodsMax;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public interface GoodsDao {
     boolean addGoods(Goods goods);
 
     boolean updateGoods(Goods goods);
+
+//    GoodsMax selectmaxgid();
 
     boolean deleteGoodsbyGid(String gid);
 

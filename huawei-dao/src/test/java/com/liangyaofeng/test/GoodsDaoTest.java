@@ -2,6 +2,7 @@ package com.liangyaofeng.test;
 
 import com.liangyaofeng.dao.GoodsDao;
 import com.liangyaofeng.entity.Goods;
+import com.liangyaofeng.entity.GoodsMax;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,12 @@ public class GoodsDaoTest {
 
     @Autowired
     GoodsDao goodsDao;
+
+//    @Test
+//    public void selectmax(){
+//        GoodsMax list=goodsDao.selectmaxgid();
+//        System.out.println(list);
+//    }
 
 
     @Test

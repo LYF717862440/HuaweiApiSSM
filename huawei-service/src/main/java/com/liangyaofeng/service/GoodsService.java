@@ -11,6 +11,8 @@ public interface GoodsService {
 
     Goods selectgoodsBygid(String gid);
 
+//    String selectmaxgid();
+
     boolean addGoods(Goods goods);
 
     boolean updateGoods(Goods goods);

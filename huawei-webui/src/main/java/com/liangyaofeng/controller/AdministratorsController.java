@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -27,8 +28,9 @@ public class AdministratorsController {
     //查询，登录验证账号
     @RequestMapping("/checklogin")
     @ResponseBody
-    public NoteResult execute(String loginId, String password, HttpSession session) throws NoSuchAlgorithmException {
+    public NoteResult execute(String loginId, String password, HttpSession session, HttpServletRequest request) throws NoSuchAlgorithmException {
         session.setAttribute("loginId",loginId);
+
         NoteResult result = administratorsService.checkLogin(loginId,password);
         return result;
     }
@@ -52,6 +54,16 @@ public class AdministratorsController {
     public R selectbyid(String aid){
         return  R.ok(administratorsService.selectAdminbyid(aid));
     }
+
+
+    @RequestMapping("/selectbyloginId")
+    @ResponseBody
+    public R selectbyloginId(String loginId){
+        return  R.ok(administratorsService.selectAllbyloginId(loginId));
+    }
+
+
+
 
     @RequestMapping("/add")
     @ResponseBody

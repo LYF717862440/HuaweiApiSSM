@@ -15,6 +15,10 @@
         </where>
     </select>
 
+    <select id="selectmaxgid" resultType="com.liangyaofeng.entity.GoodsMax">
+        select MAX(Gid) as count from goods
+    </select>
+
     <!--根据gid查询-->
     <select id="selectgoodsBygid" resultType="com.liangyaofeng.entity.Goods">
         select gid,cid,Gname,Gimg,Gtype,Gprice,Gexplain,Gcoding,Colour,

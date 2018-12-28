@@ -111,7 +111,19 @@
     <select id="getGoodsParamsPager" resultType="com.liangyaofeng.entity.Goodsparams">
         select Gcoding,Brand,TTM,CPUtype,CPUAudit,Audroid,ScreenSize,ScreenColor,
         Dpi,RAM,GB,HDFront,RearCamera,NAH,Psystem
-        from goodsparams limit #{skip},#{size}
+        from goodsparams
+        <where>
+            <if test="brand!=null and brand!= ''">
+                and brand like concat(concat('%',#{brand}),'%')
+            </if>
+            <if test="cpuaudit!=null and cpuaudit!= ''">
+                and cpuaudit like concat(concat('%',#{cpuaudit}),'%')
+            </if>
+            <if test="screensize!=null and screensize!= ''">
+                and screensize like concat(concat('%',#{screensize}),'%')
+            </if>
+        </where>
+        limit #{skip},#{size}
     </select>
 
 
@@ -119,6 +131,17 @@
     <!--获得总数 -->
     <select id="getGoodsParamsCount" resultType="int">
         select count(*) from goodsparams
+        <where>
+            <if test="brand!=null and brand!= ''">
+                and brand like concat(concat('%',#{brand}),'%')
+            </if>
+            <if test="cpuaudit!=null and cpuaudit!= ''">
+                and cpuaudit like concat(concat('%',#{cpuaudit}),'%')
+            </if>
+            <if test="screensize!=null and screensize!= ''">
+                and screensize like concat(concat('%',#{screensize}),'%')
+            </if>
+        </where>
     </select>
 
 

@@ -12,7 +12,6 @@ import java.util.List;
 @Service
 public class GoodsServiceImpl implements GoodsService{
 
-
     @Autowired
     GoodsDao goodsDao;
 
@@ -47,6 +46,10 @@ public class GoodsServiceImpl implements GoodsService{
         }
         return goodsDao.deletegoodsbyList(gids);
     }
+
+//    public String selectmaxgid(){
+//        return goodsDao.selectmaxgid();
+//    }
 
     public List<Goods> getGoodsPager(int pageNO, int size,String gname,String gtype,String colour) {
         if (StringUtils.isEmpty(gname)){

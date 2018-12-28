@@ -26,96 +26,92 @@
 <![endif]-->
 <!--/meta 作为公共模版分离出去-->
 
-<link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
+
+
+	<link href="lib/webuploader/0.1.5/webuploader.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div class="page-container">
 	<form action="" method="post" class="form form-horizontal" id="form-article-add">
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品编号：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品编码：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="gid" name="gid">
+				<input type="text" class="input-text" value="" placeholder="" id="Gcoding" name="Gcoding">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>商品名称：</label>
+			<label class="form-label col-xs-4 col-sm-2"><span class="c-red">*</span>品牌：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="gname" name="gname">
+				<input type="text" class="input-text" value="" placeholder="" id="brand" name="brand">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">类型编号：</label>
+			<label class="form-label col-xs-4 col-sm-2">CPU型号：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" class="input-text" value="" placeholder="" id="cid" name="cid">
+				<input type="text" name="CPUtype" id="CPUtype" placeholder="" value="" class="input-text">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品类型：</label>
+			<label class="form-label col-xs-4 col-sm-2">CPU核数：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="gtype" id="gtype" placeholder="" value="" class="input-text">
-			</div>
-		</div>
-		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品说明：</label>
-			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="gexplain" id="gexplain" placeholder="" value="" class="input-text">
+				<input type="text" name="CPUAudit" id="CPUAudit" placeholder="" value="" class="input-text">
 			</div>
 		</div>
 
-
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品价格：</label>
+			<label class="form-label col-xs-4 col-sm-2">双卡：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="gprice" id="gprice" placeholder="" value="" class="input-text" style="width:90%">
-				元</div>
+				<input type="text" name="audroid" id="audroid" placeholder="" value="" class="input-text" style="width:90%">
+			</div>
 		</div>
+		<!--Gcoding brand TTM CPUtype CPUAudit audroid ScreenSize ScreenColor -->
+		<!--dpi RAM GB HDFRONT RearCamera NAH Psystem-->
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品编码：</label>
+			<label class="form-label col-xs-4 col-sm-2">屏幕尺寸：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="gcoding" id="gcoding" placeholder="" value="" class="input-text" style="width:90%">
+				<input type="text" name="ScreenSize" id="ScreenSize" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">颜色：</label>
+			<label class="form-label col-xs-4 col-sm-2">屏幕色彩：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="colour" id="colour" placeholder="" value="" class="input-text" style="width:90%">
+				<input type="text" name="ScreenColor" id="ScreenColor" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">版本：</label>
+			<label class="form-label col-xs-4 col-sm-2">运行内存：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="versions" id="versions" placeholder="" value="" class="input-text" style="width:90%">
+				<input type="text" name="RAM" id="RAM" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">库存：</label>
+			<label class="form-label col-xs-4 col-sm-2">存储容量：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="stock" id="stock" placeholder="" value="" class="input-text" style="width:90%">
+				<input type="text" name="GB" id="GB" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">状态：</label>
+			<label class="form-label col-xs-4 col-sm-2">前置摄像头：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="gstate" id="gstate" placeholder="" value="" class="input-text">
+				<input type="text" name="HDFRONT" id="HDFRONT" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">管理员ID：</label>
+			<label class="form-label col-xs-4 col-sm-2">后置摄像头：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="text" name="aid" id="aid" placeholder="" value="" class="input-text">
+				<input type="text" name="RearCamera" id="RearCamera" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">商品详细：</label>
+			<label class="form-label col-xs-4 col-sm-2">电池容量：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<textarea name="details" id="details" cols="" rows="" class="textarea"  placeholder="说点什么...最少输入10个字符" datatype="*10-100" dragonfly="true" nullmsg="备注不能为空！" onKeyUp="$.Huitextarealength(this,200)"></textarea>
-				<p class="textarea-numberbar"><em class="textarea-length">0</em>/200</p>
+				<input type="text" name="NAH" id="NAH" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
-			<label class="form-label col-xs-4 col-sm-2">图片：</label>
+			<label class="form-label col-xs-4 col-sm-2">系统：</label>
 			<div class="formControls col-xs-8 col-sm-9">
-				<input type="file" name="gimg" id="gimg">
+				<input type="text" name="Psystem" id="Psystem" placeholder="" value="" class="input-text" style="width:90%">
 			</div>
 		</div>
 		<div class="row cl">
@@ -123,9 +119,7 @@
 		</div>
 		<div class="row cl">
 			<div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2" id="btn">
-				<!--<button onclick="add()" class="btn btn-primary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存并提交审核</button>-->
-				<!--<button onClick="update();" class="btn btn-secondary radius" type="button"><i class="Hui-iconfont">&#xe632;</i> 保存草稿</button>-->
-				<!--<button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>-->
+
 			</div>
 		</div>
 	</form>
@@ -167,37 +161,22 @@
             data: {gid:gid.substring(5)},
             success: function(data) {
                 if(data.code == 1) {
-
-                    $.ajax({
-                        url: "goods/selectmaxloginId",
-                        data: {},
-                        success: function(result) {
-                            if(data.code==1){
-								alert(result.data);
-                                $("#gid").val(result.result.gid);
-                                $("#gname").val(data.data.gname);
-                                $("#cid").val(data.data.cid);
-                                $("#gtype").val(data.data.gtype);
-                                $("#gexplain").val(data.data.gexplain);
-                                $("#gprice").val(data.data.gprice);
-                                $("#gcoding").val(data.data.gcoding);
-                                $("#colour").val(data.data.colour);
-                                $("#versions").val(data.data.versions);
-                                $("#stock").val(data.data.stock);
-                                $("#gstate").val(data.data.gstate);
-                                // $("#aid").val(data.data.aid);
-
-                                var login_name=sessionStorage.getItem("aid");
-                                $("#aid").val(login_name);
-
-                                $("#details").val(data.data.details);
-                                $("#gimg").val(data.data.gimg);
-
-                            }else{
-
-                            }
-                        }
-                    })
+                    // console.log(data.data);
+                    // alert(data.data.colour);
+                    $("#gid").val(data.data.gid);
+                    $("#gname").val(data.data.gname);
+                    $("#cid").val(data.data.cid);
+                    $("#gtype").val(data.data.gtype);
+                    $("#gexplain").val(data.data.gexplain);
+                    $("#gprice").val(data.data.gprice);
+                    $("#gcoding").val(data.data.gcoding);
+                    $("#colour").val(data.data.colour);
+                    $("#versions").val(data.data.versions);
+                    $("#stock").val(data.data.stock);
+                    $("#gstate").val(data.data.gstate);
+                    $("#aid").val(data.data.aid);
+                    $("#details").val(data.data.details);
+                    $("#gimg").val(data.data.gimg);
                 }
             }
         })

@@ -26,9 +26,9 @@ public interface GoodsParamsDao {
     boolean deletegoodsbyList(List<String> gcodings);
 
 
-    List<Goodsparams> getGoodsParamsPager(@Param("skip") int skip, @Param("size") int size);
+    List<Goodsparams> getGoodsParamsPager(@Param("skip") int skip, @Param("size") int size,@Param("brand") String brand,@Param("cpuaudit") String cpuaudit,@Param("screensize")String screensize);
 
-    int getGoodsParamsCount();
+    int getGoodsParamsCount(@Param("brand") String brand,@Param("cpuaudit") String cpuaudit,@Param("screensize")String screensize);
 
 
 
