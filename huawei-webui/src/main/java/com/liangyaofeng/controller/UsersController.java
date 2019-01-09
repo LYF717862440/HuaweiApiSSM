@@ -1,6 +1,7 @@
 package com.liangyaofeng.controller;
 
 import com.liangyaofeng.common.R;
+import com.liangyaofeng.entity.NoteResult;
 import com.liangyaofeng.entity.Users;
 import com.liangyaofeng.service.UsersServie;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.xml.crypto.Data;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +43,31 @@ public class UsersController {
     }
 
 
+    //注册账号，就是添加账号
+    @RequestMapping("/regist")
+    @ResponseBody
+    public NoteResult execute(String loginId, String password , HttpServletRequest request) throws NoSuchAlgorithmException {
+        NoteResult result= usersServie.regist(loginId,password);
+        return  result;
+
+    }
+
+    //用户登录账号
+    @RequestMapping("/login")
+    @ResponseBody
+    public NoteResult login(String loginId, String password, HttpServletRequest request) throws NoSuchAlgorithmException {
+
+        HttpSession session = request.getSession();
+        session.setAttribute("loginId",loginId);
+        System.out.println(loginId);
+
+        NoteResult result = usersServie.checkLogin(loginId,password);
+        return result;
+    }
+
+
+
+
     @RequestMapping("/selectbyid")
     @ResponseBody
     public R selectbyid(String uid){
@@ -47,34 +75,43 @@ public class UsersController {
     }
 
 
+    @RequestMapping("/selectUsersbyloginId")
+    @ResponseBody
+    public R selectUsersbyloginId(String loginId){
+        return  R.ok(usersServie.selectUsersbyloginId(loginId));
+    }
+
+
+
+
     @RequestMapping("/add")
     @ResponseBody
-    public R add(HttpServletRequest request){
-        String loginId=request.getParameter("loginId");
-        String password=request.getParameter("password");
-        String uname=request.getParameter("uname");
-        String sex=request.getParameter("sex");
-        String uphone=request.getParameter("uphone");
-        Double balance=Double.parseDouble(request.getParameter("balance"));
-
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String ubirthday=request.getParameter("ubirthday");
-
-        String ustate=request.getParameter("ustate");
-
-        Date date = new Date();
-//        Timestamp ts = new Timestamp(ubirthday);
-
-        Users users=new Users();
-        users.setLoginId(loginId);
-        users.setPassword(password);
-        users.setUname(uname);
-        users.setSex(sex);
-        users.setUphone(uphone);
-        users.setBalance(balance);
-//        users.getUbirthday(ts);
-        users.setUstate(ustate);
+    public R add(HttpServletRequest request,Users users){
+//        String loginId=request.getParameter("loginId");
+//        String password=request.getParameter("password");
+//        String uname=request.getParameter("uname");
+//        String sex=request.getParameter("sex");
+//        String uphone=request.getParameter("uphone");
+//        Double balance=Double.parseDouble(request.getParameter("balance"));
+//
+//
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String ubirthday=request.getParameter("ubirthday");
+//
+//        String ustate=request.getParameter("ustate");
+//
+//        Date date = new Date();
+////        Timestamp ts = new Timestamp(ubirthday);
+//
+//        Users users=new Users();
+//        users.setLoginId(loginId);
+//        users.setPassword(password);
+//        users.setUname(uname);
+//        users.setSex(sex);
+//        users.setUphone(uphone);
+//        users.setBalance(balance);
+////        users.getUbirthday(ts);
+//        users.setUstate(ustate);
         return  R.ok(usersServie.addUsers(users));
     }
 

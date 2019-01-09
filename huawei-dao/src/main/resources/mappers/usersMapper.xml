@@ -48,10 +48,10 @@
     </select>
 
 
-    <!--添加-->
+    <!--添加，注册用户-->
     <insert id="addUsers">
-        insert into users(loginId,Password,Uname,Sex,Uphone,Balance,Ubirthday,Ustate)
-        values(#{loginId},#{password},#{uname},#{sex},#{uphone},#{balance},#{ubirthday},#{ustate})
+        insert into users(loginId,Password,Uname,Sex,Uphone,Balance,Ustate)
+        values(#{loginId},#{password},#{uname},#{sex},#{uphone},#{balance},#{ustate})
     </insert>
 
 

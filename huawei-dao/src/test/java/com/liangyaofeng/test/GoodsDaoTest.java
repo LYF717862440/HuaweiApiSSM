@@ -79,7 +79,7 @@ public class GoodsDaoTest {
 
     @Test
     public void pager(){
-        System.out.println(goodsDao.getGoodsPager(0,5,"荣耀","电脑","星空"));
+        System.out.println(goodsDao.getGoodsPager(0,8,"","",""));
     }
 
 

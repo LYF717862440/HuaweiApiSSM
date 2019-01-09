@@ -5,6 +5,7 @@ import com.liangyaofeng.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -15,10 +16,10 @@ public class PictureController {
     PictureService pictureService;
 
 
-    @RequestMapping("/selectall")
+    @RequestMapping("/selectbyimgnameAndgid")
     @ResponseBody
-    public R selectall(String gid){
-        return  R.ok(pictureService.selectAllPicture());
+    public R selectbyimgnameAndgid(String imgname,String gid){
+        return  R.ok(pictureService.selectbyimgname(imgname,gid));
     }
 
 
@@ -27,6 +28,17 @@ public class PictureController {
     public R selectbyid(String gid){
         return  R.ok(pictureService.selectPicturebygid(gid));
     }
+
+
+
+
+    @RequestMapping("/picturepage")
+    @ResponseBody
+    public R picturepage(@RequestParam(defaultValue ="0")int skip, @RequestParam(defaultValue = "1")int size, String imgname, String gid){
+        return R.ok(pictureService.getPicturePager(skip,size,imgname,gid));
+    }
+
+
 
 
 

@@ -115,7 +115,7 @@
 <script src="js/dialog-min.js" type="text/javascript" charset="utf-8"></script>
 <link rel="stylesheet" type="text/css" href="dist/css/layui.css" />
 <script src="dist/layui.all.js" type="text/javascript" charset="utf-8"></script>
-
+	<script src="JS/mydate.js"></script>
 <script type="text/javascript" src="lib/zTree/v3/js/jquery.ztree.all-3.5.min.js"></script>
 <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script>
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
@@ -173,7 +173,7 @@
                     var td13 = $("<td/>").html(data.data.psystem);
                     tr.append(td13);
 
-                    var td14 = $("<td/>").html(data.data.ttm);
+                    var td14 = $("<td/>").html(getFormateDateByLong(data.data.ttm));
                     tr.append(td14);
 
                     $("#listgoodsparams").append(tr);

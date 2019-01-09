@@ -8,8 +8,10 @@ import java.util.List;
 
 public interface UsersServie {
 
+    //注册用户
+    public NoteResult regist(String loginId,String password) throws NoSuchAlgorithmException;
 
-//    登录验证
+    //登录验证
     public NoteResult checkLogin(String loginId, String password) throws NoSuchAlgorithmException;
 
     List<Users> selectAllUsers(String loginId, String uname);

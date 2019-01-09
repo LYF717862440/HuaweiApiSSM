@@ -4,11 +4,39 @@
 <mapper namespace="com.liangyaofeng.dao.PictureDao">
 
     <!--查询所有-->
-    <select id="selectAllPicture" resultType="com.liangyaofeng.entity.Picture">
+    <select id="selectbyimgname" resultType="com.liangyaofeng.entity.Picture">
         select pid,gid,pname,imgname
         from picture
+        <where>
+            <if test="gid!=null and gid!=''">
+                gid like concat(concat('%',#{gid}),'%')
+            </if>
+            <if test="imgname!=null and imgname!=''">
+                and imgname like concat(concat('%',#{imgname}),'%')
+            </if>
+        </where>
 
     </select>
+
+
+
+    <!--分页 -->
+    <select id="getPicturePager" resultType="com.liangyaofeng.entity.Picture">
+        select pid,gid,pname,imgname
+        from picture
+        <where>
+            <if test="gid!=null and gid!=''">
+                gid like concat(concat('%',#{gid}),'%')
+            </if>
+            <if test="imgname!=null and imgname!=''">
+                and imgname like concat(concat('%',#{imgname}),'%')
+            </if>
+        </where>
+        limit #{skip},#{size}
+    </select>
+
+
+
 
 
     <!--根据loginId查询-->

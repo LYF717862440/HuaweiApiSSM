@@ -75,6 +75,7 @@
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 
+<script src="JS/mydate.js"></script>
 <link rel="stylesheet" type="text/css" href="dist/css/layui.css"/>
 <script src="dist/layui.all.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
@@ -131,7 +132,7 @@
                                             var td7 = $("<td/>").html(obj.aphone);
                                             tr.append(td7);
 
-                                            var td8 = $("<td/>").html(obj.abirthday);
+                                            var td8 = $("<td/>").html(getFormateDateByLong(obj.abirthday));
                                             tr.append(td8);
 
                                             var td10 = $("<td/>").html(obj.astate);

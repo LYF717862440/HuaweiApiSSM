@@ -20,6 +20,26 @@ public class UsersServiceImpl implements UsersServie {
     UsersDao usersDao;
 
 
+    public NoteResult regist(String loginId, String password) throws NoSuchAlgorithmException {
+        NoteResult result = new NoteResult();
+        //检测用户名是否被占用
+        Users hash_user=usersDao.selectUsersbyloginId(loginId);
+        if(hash_user!=null){
+            result.setStatus(1);
+            result.setMsg("用户名已被占用");
+            return  result;
+        }
+        Users user = new Users();
+        user.setLoginId(loginId);
+        String md5_pwd = NoteUtil.md5(password);
+        user.setPassword(md5_pwd);
+        //调用userDao保存
+        usersDao.addUsers(user);
+        result.setStatus(0);
+        result.setMsg("注册成功");
+        return result;
+    }
+
     public NoteResult checkLogin(String loginId, String password) throws NoSuchAlgorithmException {
         NoteResult result = new NoteResult();
         Users users = usersDao.selectUsersbyloginId(loginId);
@@ -31,7 +51,7 @@ public class UsersServiceImpl implements UsersServie {
         //将用户输入的pwd密码加密
         String md5_pwd=NoteUtil.md5(password);
         //与数据库密码比对
-        if(!users.getPassword().equals(password)){
+        if(!users.getPassword().equals(md5_pwd)){
             result.setStatus(2);
             result.setMsg("密码不正确");
             return  result;

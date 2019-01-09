@@ -31,7 +31,7 @@
 			用户姓名：<input type="text" name="uname" id="uname" placeholder=" 请输入用户姓名" style="width:250px" class="input-text">
 			<button name="" id="" class="btn btn-success" onclick="showpager()" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜索用户</button>
 		</div>
-		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="product_add('添加用户','users-add.html')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加产品</a></span> <span class="r">共有数据：<strong id="count"></strong> 条</span> </div>
+		<div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l"><a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> <a class="btn btn-primary radius" onclick="product_add('添加用户','users-add.html')" href="javascript:;"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> <span class="r">共有数据：<strong id="count"></strong> 条</span> </div>
 		<div class="mt-20">
 			
 			<table class="table table-border table-bordered table-bg table-hover">
@@ -73,6 +73,7 @@
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
 
+<script src="JS/mydate.js"></script>
 <link rel="stylesheet" type="text/css" href="dist/css/layui.css"/>
 <script src="dist/layui.all.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
@@ -128,7 +129,7 @@
                                             var td7 = $("<td/>").html(obj.balance);
                                             tr.append(td7);
 
-                                            var td8 = $("<td/>").html(obj.ubirthday);
+                                            var td8 = $("<td/>").html(getFormateDateByLong(obj.ubirthday));
                                             tr.append(td8);
 
                                             var td9=$("<td class='td-manage'/>");

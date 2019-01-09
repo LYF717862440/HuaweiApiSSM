@@ -30,7 +30,7 @@ public class AdministratorsServiceImpl implements AdministratorsService{
         //将用户输入的pwd密码加密
         String md5_pwd=NoteUtil.md5(password);
         //与数据库密码比对
-        if(!administrators.getPassword().equals(password)){
+        if(!administrators.getPassword().equals(md5_pwd)){
             result.setStatus(2);
             result.setMsg("密码不正确");
             return  result;

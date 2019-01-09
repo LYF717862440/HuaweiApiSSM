@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.liangyaofeng.dao.GpictureDao">
+
+    <!--根据商品编号查询-->
+    <select id="selectGpicturebygid" resultType="com.liangyaofeng.entity.Gpicture">
+        select Pid,Gid,Smallgraph,standard,Bigpicture
+        from gpicture
+        where Gid= #{gid}
+
+    </select>
+
+
+
+
+    <!--&lt;!&ndash;添加&ndash;&gt;-->
+    <!--<insert id="addUsers">-->
+        <!--insert into users(loginId,Password,Uname,Sex,Uphone,Balance,Ubirthday,Ustate)-->
+        <!--values(#{loginId},#{password},#{uname},#{sex},#{uphone},#{balance},#{ubirthday},#{ustate})-->
+    <!--</insert>-->
+
+
+    <!--&lt;!&ndash;修改&ndash;&gt;-->
+    <!--<update id="updateUsers">-->
+        <!--update users-->
+        <!--<set>-->
+            <!--<if test="password!=null and password!=''">-->
+                <!--password =#{password},-->
+            <!--</if>-->
+            <!--<if test="uname!=null and uname!=''">-->
+                <!--uname =#{uname},-->
+            <!--</if>-->
+            <!--<if test="sex!=null and sex!=''">-->
+                <!--sex =#{sex},-->
+            <!--</if>-->
+            <!--<if test="uphone!=null and uphone!=''">-->
+                <!--uphone =#{uphone},-->
+            <!--</if>-->
+            <!--<if test="balance!=null and balance!=''">-->
+                <!--balance =#{balance},-->
+            <!--</if>-->
+            <!--<if test="ubirthday!=null and ubirthday!=''">-->
+                <!--ubirthday =#{ubirthday},-->
+            <!--</if>-->
+            <!--<if test="ustate!=null and ustate!=''">-->
+                <!--ustate =#{ustate},-->
+            <!--</if>-->
+        <!--</set>-->
+        <!--where loginId=#{loginId}-->
+    <!--</update>-->
+
+    <!--&lt;!&ndash;删除&ndash;&gt;-->
+    <!--<delete id="deleteUsersbyloginId">-->
+        <!--delete from users where loginId=#{loginId}-->
+    <!--</delete>-->
+
+    <!--&lt;!&ndash;多删除&ndash;&gt;-->
+    <!--<delete id="deleteUsersbyList">-->
+        <!--delete from users where loginId in-->
+        <!--<foreach collection="list" open="(" item="loginId" separator="," close=")">-->
+            <!--#{loginId}-->
+        <!--</foreach>-->
+    <!--</delete>-->
+
+
+</mapper>

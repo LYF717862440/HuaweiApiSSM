@@ -7,8 +7,8 @@ public class Picture implements Serializable {
 
   private long pid;
   private String gid;
-  private String pname;
   private String imgname;
+  private String pname;
 
 
   public long getPid() {
@@ -29,14 +29,6 @@ public class Picture implements Serializable {
   }
 
 
-  public String getPname() {
-    return pname;
-  }
-
-  public void setPname(String pname) {
-    this.pname = pname;
-  }
-
   public String getImgname() {
     return imgname;
   }
@@ -46,14 +38,22 @@ public class Picture implements Serializable {
   }
 
 
+  public String getPname() {
+    return pname;
+  }
+
+  public void setPname(String pname) {
+    this.pname = pname;
+  }
+
+
   @Override
   public String toString() {
     return "Picture{" +
             "pid=" + pid +
             ", gid='" + gid + '\'' +
-            ", pname='" + pname + '\'' +
             ", imgname='" + imgname + '\'' +
+            ", pname='" + pname + '\'' +
             '}';
   }
-
 }

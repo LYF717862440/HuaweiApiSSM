@@ -76,6 +76,7 @@
 <link rel="stylesheet" type="text/css" href="dist/css/layui.css" />
 <script src="dist/layui.all.js" type="text/javascript" charset="utf-8"></script>
 
+<script src="JS/mydate.js" type="text/javascript" charset="UTF-8"></script>
 <script type="text/javascript" src="lib/My97DatePicker/4.8/WdatePicker.js"></script> 
 <script type="text/javascript" src="lib/datatables/1.10.0/jquery.dataTables.min.js"></script> 
 <script type="text/javascript" src="lib/laypage/1.2/laypage.js"></script>
@@ -133,7 +134,7 @@
                                             // var a=$("<a class='maincolor'  href='javascript:;' onClick='goodsparams_edit(\"参数编辑\",\"goodsparams-list.html\","+goods.gcoding+")'>参数信息</a>").appendTo(td6);
                                             // tr.append(td6);
 
-                                            var td7 = $("<td/>").html(goods.loadingtime);
+                                            var td7 = $("<td/>").html(getFormateDateByLong(goods.loadingtime));
                                             tr.append(td7);
 
                                             var td8 = $("<td class='td-status'/>");
