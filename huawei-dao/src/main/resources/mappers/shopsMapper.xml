@@ -4,8 +4,8 @@
 <mapper namespace="com.liangyaofeng.dao.ShopsDao">
 
     <!--查询所有-->
-    <select id="selectShopsbyuid" resultType="com.liangyaofeng.entity.Users">
-        select id,Uid,Gid,Gimg,Sname,Sprice,Amount,Totals
+    <select id="selectShopsbyuid" resultType="com.liangyaofeng.entity.Shops">
+        select id,Uid,Gid,Gimg,Sname,Sprice,Amount,Totals,sstate,buyordersid
         from shops
         where Uid=#{uid}
     </select>
@@ -15,8 +15,8 @@
 
     <!--添加-->
     <insert id="addShops">
-        insert into shops(Uid,Gid,Gimg,Sname,Sprice,Amount,Totals)
-        values(#{Uid},#{Gid},#{Gimg},#{Sname},#{Sprice},#{Amount},#{Totals})
+        insert into shops(Uid,Gid,Gimg,Sname,Sprice,Amount,Totals,sstate,buyordersid)
+        values(#{uid},#{gid},#{gimg},#{sname},#{sprice},#{amount},#{totals},#{sstate},#{buyordersid})
     </insert>
 
 
@@ -30,34 +30,37 @@
 
 
 
-    <!--&lt;!&ndash;修改&ndash;&gt;-->
-    <!--<update id="updateUsers">-->
-        <!--update users-->
-        <!--<set>-->
-            <!--<if test="password!=null and password!=''">-->
-                <!--password =#{password},-->
-            <!--</if>-->
-            <!--<if test="uname!=null and uname!=''">-->
-                <!--uname =#{uname},-->
-            <!--</if>-->
-            <!--<if test="sex!=null and sex!=''">-->
-                <!--sex =#{sex},-->
-            <!--</if>-->
-            <!--<if test="uphone!=null and uphone!=''">-->
-                <!--uphone =#{uphone},-->
-            <!--</if>-->
-            <!--<if test="balance!=null and balance!=''">-->
-                <!--balance =#{balance},-->
-            <!--</if>-->
-            <!--<if test="ubirthday!=null and ubirthday!=''">-->
-                <!--ubirthday =#{ubirthday},-->
-            <!--</if>-->
-            <!--<if test="ustate!=null and ustate!=''">-->
-                <!--ustate =#{ustate},-->
-            <!--</if>-->
-        <!--</set>-->
-        <!--where loginId=#{loginId}-->
-    <!--</update>-->
+    <!--修改-->
+    <update id="updateShops">
+        update shops
+        <set>
+            <if test="password!=null and password!=''">
+                password =#{password},
+            </if>
+            <if test="uname!=null and uname!=''">
+                uname =#{uname},
+            </if>
+            <if test="sex!=null and sex!=''">
+                sex =#{sex},
+            </if>
+            <if test="uphone!=null and uphone!=''">
+                uphone =#{uphone},
+            </if>
+            <if test="balance!=null and balance!=''">
+                balance =#{balance},
+            </if>
+            <if test="ubirthday!=null and ubirthday!=''">
+                ubirthday =#{ubirthday},
+            </if>
+            <if test="ustate!=null and ustate!=''">
+                ustate =#{ustate},
+            </if>
+            <if test="buyordersid!=null and buyordersid!=''">
+                buyordersid =#{buyordersid},
+            </if>
+        </set>
+        where loginId=#{loginId}
+    </update>
 
 
 

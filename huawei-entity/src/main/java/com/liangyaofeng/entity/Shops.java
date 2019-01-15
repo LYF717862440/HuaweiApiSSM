@@ -13,6 +13,8 @@ public class Shops implements Serializable {
   private double sprice;
   private long amount;
   private double totals;
+  private String sstate;
+  private long buyordersid;
 
 
   public long getId() {
@@ -86,6 +88,23 @@ public class Shops implements Serializable {
     this.totals = totals;
   }
 
+  public String getSstate() {
+    return sstate;
+  }
+
+  public void setSstate(String sstate) {
+    this.sstate = sstate;
+  }
+
+
+  public long getBuyordersid() {
+    return buyordersid;
+  }
+
+  public void setBuyordersid(long buyordersid) {
+    this.buyordersid = buyordersid;
+  }
+
 
   @Override
   public String toString() {
@@ -98,7 +117,8 @@ public class Shops implements Serializable {
             ", sprice=" + sprice +
             ", amount=" + amount +
             ", totals=" + totals +
+            ", sstate='" + sstate + '\'' +
+            ", buyordersid=" + buyordersid +
             '}';
   }
-
 }

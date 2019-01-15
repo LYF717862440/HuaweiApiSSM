@@ -31,6 +31,20 @@ public class ShopsDaoText {
         System.out.println(shopsDao.deleteShopsbyid(11));
     }
 
+    @Test
+    public void add(){
+        Shops shops=new Shops();
+        shops.setUid(12);
+        shops.setGid(1811220101);
+        shops.setGimg("rongyao1.jpg");
+        shops.setAmount(1);
+        shops.setSname("荣耀10 全网通6GB+64GB （幻夜黑）");
+        shops.setSprice(2000);
+        shops.setTotals(2);
+
+        System.out.println(shopsDao.addShops(shops));
+    }
+
 
 
 

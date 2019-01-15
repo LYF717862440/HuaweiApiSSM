@@ -10,7 +10,6 @@ public interface ShopsService {
 
     boolean addShops(Shops shops);
 
-
     boolean deleteShopsbyid(int id);
 
 

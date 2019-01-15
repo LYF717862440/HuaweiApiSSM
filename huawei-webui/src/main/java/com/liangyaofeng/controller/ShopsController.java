@@ -18,7 +18,7 @@ public class ShopsController {
     ShopsService shopsService;
 
 
-
+    //根据用户编号查询
     @RequestMapping("/selectshopsbyuid")
     @ResponseBody
     public R selectshopsbyuid(String uid){

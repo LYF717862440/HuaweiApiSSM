@@ -17,7 +17,6 @@ public class ShopsServiceImpl implements ShopsService {
 
 
 
-
     public List<Shops> selectShopsbyuid(String uid) {
         List<Shops> list =shopsDao.selectShopsbyuid(uid);
         return list;

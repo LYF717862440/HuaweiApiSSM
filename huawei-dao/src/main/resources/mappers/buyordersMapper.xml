@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--命名空间应该是对应接口的包名+接口名 -->
+<mapper namespace="com.liangyaofeng.dao.BuyordersDao">
+
+    <!--查询所有-->
+    <select id="selectBuyorders" resultType="com.liangyaofeng.entity.Buyorders">
+        select * from buyorders where Uid=#{uid}
+    </select>
+
+
+
+    <!--添加-->
+    <insert id="addBuyorders">
+        insert into buyorders(uid,uname,uphone,Postcode,Uaddress,buyordersid)
+        values (#{uid},#{uname},#{uphone},#{Postcode},#{Uaddress},#{buyordersid})
+    </insert>
+
+
+    <!--删除-->
+    <delete id="deletebuyorders">
+        delete from buyorders where id=#{id}
+    </delete>
+
+
+
+
+
+
+    <!--修改-->
+    <!--<update id="updateOrders">-->
+        <!--update orders-->
+        <!--<set>-->
+            <!--<if test="ostate!=null and ostate!=''">-->
+                <!--ostate =#{ostate},-->
+            <!--</if>-->
+        <!--</set>-->
+        <!--where oid=#{oid}-->
+    <!--</update>-->
+
+
+
+    <!--分页 -->
+    <!--<select id="getOrdersPager" resultType="com.liangyaofeng.entity.Orders">-->
+        <!--select oid,uid,gid,gimg,cname,oprice,OAmount,Odate,ostate,buyordersid-->
+        <!--from orders-->
+        <!--<where>-->
+            <!--<if test="uid!=null and uid!= ''">-->
+                <!--and uid like concat(concat('%',#{uid}),'%')-->
+            <!--</if>-->
+            <!--<if test="gid!=null and gid!= ''">-->
+                <!--and gid like concat(concat('%',#{gid}),'%')-->
+            <!--</if>-->
+            <!--<if test="cname!=null and cname!= ''">-->
+                <!--and cname like concat(concat('%',#{cname}),'%')-->
+            <!--</if>-->
+            <!--<if test="ostate!=null and ostate!= ''">-->
+                <!--and ostate like concat(concat('%',#{ostate}),'%')-->
+            <!--</if>-->
+        <!--</where>-->
+        <!--limit #{skip},#{size}-->
+    <!--</select>-->
+
+
+
+    <!--获得总数 -->
+    <!--<select id="getOrdersCount" resultType="int">-->
+        <!--select count(*) from orders-->
+        <!--<where>-->
+            <!--<if test="uid!=null and uid!= ''">-->
+                <!--and uid like concat(concat('%',#{uid}),'%')-->
+            <!--</if>-->
+            <!--<if test="gid!=null and gid!= ''">-->
+                <!--and gid like concat(concat('%',#{gid}),'%')-->
+            <!--</if>-->
+            <!--<if test="cname!=null and cname!= ''">-->
+                <!--and cname like concat(concat('%',#{cname}),'%')-->
+            <!--</if>-->
+            <!--<if test="ostate!=null and ostate!= ''">-->
+                <!--and ostate like concat(concat('%',#{ostate}),'%')-->
+            <!--</if>-->
+        <!--</where>-->
+    <!--</select>-->
+
+
+</mapper>
