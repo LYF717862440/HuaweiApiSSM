@@ -17,6 +17,8 @@ public interface OrdersService {
 
     boolean updateOrders(Orders orders);
 
+    boolean updateOrdersByamount(Orders orders);
+
 
     List<Orders> getOrdersPager( int pageNO, int size, String uid, String gid, String cname,String ostate);
 

@@ -50,6 +50,20 @@
 
 
 
+    <!--修改数量-->
+    <update id="updateOrdersByamount">
+        update orders
+        <set>
+            <if test="OAmount!=null and OAmount!=''">
+                OAmount =#{OAmount},
+            </if>
+        </set>
+        where oid=#{oid}
+    </update>
+
+
+
+
     <!--分页 -->
     <select id="getOrdersPager" resultType="com.liangyaofeng.entity.Orders">
     select oid,uid,gid,gimg,cname,oprice,OAmount,Odate,ostate,buyordersid

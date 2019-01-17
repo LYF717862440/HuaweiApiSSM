@@ -20,6 +20,9 @@ public interface OrdersDao {
     boolean updateOrders(Orders orders);
 
 
+    boolean updateOrdersByamount(Orders orders);
+
+
     List<Orders> getOrdersPager(@Param("skip") int skip,@Param("size") int size,@Param("uid") String uid,@Param("gid") String gid,@Param("cname") String cname,@Param("ostate")String ostate);
 
 

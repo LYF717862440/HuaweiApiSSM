@@ -64,6 +64,23 @@
 
 
 
+
+    <!--修改数量-->
+    <update id="updateShopsByid">
+        update shops
+        <set>
+            <if test="amount!=null and amount!=''">
+                amount =#{amount},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+
+
+
+
+
     <!--&lt;!&ndash;多删除&ndash;&gt;-->
     <!--<delete id="deleteUsersbyList">-->
         <!--delete from users where loginId in-->

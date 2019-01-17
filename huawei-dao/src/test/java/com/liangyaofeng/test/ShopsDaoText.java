@@ -46,6 +46,20 @@ public class ShopsDaoText {
     }
 
 
+    @Test
+    public void updatebyamount(){
+
+        Shops shops=new Shops();
+
+        shops.setId(54);
+        shops.setAmount(5);
+
+
+
+        System.out.println(shopsDao.updateShopsByid(shops));
+    }
+
+
 
 
 }

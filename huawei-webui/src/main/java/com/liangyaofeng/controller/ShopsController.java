@@ -41,5 +41,15 @@ public class ShopsController {
 
 
 
+    @RequestMapping("/updatebyid")
+    @ResponseBody
+    public R updatebyid(Shops shops){
+        return  R.ok(shopsService.updateShopsByid(shops));
+    }
+
+
+
+
+
 
 }

@@ -10,6 +10,10 @@ public interface ShopsService {
 
     boolean addShops(Shops shops);
 
+
+    boolean updateShopsByid(Shops shops);
+
+
     boolean deleteShopsbyid(int id);
 
 

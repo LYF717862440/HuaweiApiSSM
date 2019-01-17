@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BuyordersDao {
 
-    List<Buyorders> selectBuyorders(@Param("uid") String uid);
+    Buyorders selectBuyorders(@Param("uid") String uid);
 
 
     boolean deletebuyorders(@Param("id") int id);

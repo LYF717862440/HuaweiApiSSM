@@ -9,7 +9,7 @@ public interface BuyordersService {
 
 
 
-    List<Buyorders> selectBuyorders(String uid);
+    Buyorders selectBuyorders(String uid);
 
 
     boolean deletebuyorders(int id);

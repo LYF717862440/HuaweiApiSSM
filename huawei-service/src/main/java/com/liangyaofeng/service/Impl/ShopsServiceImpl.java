@@ -26,6 +26,10 @@ public class ShopsServiceImpl implements ShopsService {
         return shopsDao.addShops(shops);
     }
 
+    public boolean updateShopsByid(Shops shops) {
+        return shopsDao.updateShopsByid(shops);
+    }
+
     public boolean deleteShopsbyid(int id) {
         return shopsDao.deleteShopsbyid(id);
     }

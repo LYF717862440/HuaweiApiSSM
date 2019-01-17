@@ -5,15 +5,15 @@
 
     <!--查询所有-->
     <select id="selectBuyorders" resultType="com.liangyaofeng.entity.Buyorders">
-        select * from buyorders where Uid=#{uid}
+        select * from buyorders where uid=#{uid}
     </select>
 
 
 
     <!--添加-->
     <insert id="addBuyorders">
-        insert into buyorders(uid,uname,uphone,Postcode,Uaddress,buyordersid)
-        values (#{uid},#{uname},#{uphone},#{Postcode},#{Uaddress},#{buyordersid})
+        insert into buyorders(uid,uname,uphone,Postcode,Uaddress,buyordersid,total)
+        values (#{uid},#{uname},#{uphone},#{postcode},#{uaddress},#{buyordersid},#{total})
     </insert>
 
 

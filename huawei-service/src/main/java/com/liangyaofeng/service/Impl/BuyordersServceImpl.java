@@ -18,10 +18,8 @@ public class BuyordersServceImpl implements BuyordersService {
     BuyordersDao buyordersDao;
 
 
-
-
-    public List<Buyorders> selectBuyorders(String uid) {
-        List<Buyorders> list=buyordersDao.selectBuyorders(uid);
+    public Buyorders selectBuyorders(String uid) {
+        Buyorders list=buyordersDao.selectBuyorders(uid);
         return list;
     }
 

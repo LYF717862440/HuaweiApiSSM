@@ -12,6 +12,7 @@ public class Buyorders implements Serializable {
   private String postcode;
   private String uaddress;
   private long buyordersid;
+  private double total;
 
 
   public long getId() {
@@ -76,6 +77,14 @@ public class Buyorders implements Serializable {
     this.buyordersid = buyordersid;
   }
 
+  public double getTotal() {
+    return total;
+  }
+
+  public void setTotal(double total) {
+    this.total = total;
+  }
+
 
   @Override
   public String toString() {
@@ -87,6 +96,7 @@ public class Buyorders implements Serializable {
             ", postcode='" + postcode + '\'' +
             ", uaddress='" + uaddress + '\'' +
             ", buyordersid=" + buyordersid +
+            ", total=" + total +
             '}';
   }
 }

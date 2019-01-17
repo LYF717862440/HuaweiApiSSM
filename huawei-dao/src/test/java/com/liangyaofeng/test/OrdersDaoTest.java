@@ -24,8 +24,8 @@ public class OrdersDaoTest {
     @Test
     public void add(){
         List<Integer> list=new ArrayList<Integer>();
-        list.add(21);
-        list.add(22);
+        list.add(56);
+        list.add(58);
 //        list.add(23);
         System.out.println(ordersDao.addAllOrders(list));
     }
@@ -46,6 +46,19 @@ public class OrdersDaoTest {
         orders.setOstate("已发货");
 
         System.out.println(ordersDao.updateOrders(orders));
+    }
+
+
+    @Test
+    public void updateoamount(){
+
+        Orders orders=new Orders();
+
+        orders.setOid(50);
+        orders.setOAmount(5);
+
+        System.out.println(ordersDao.updateOrdersByamount(orders));
+
     }
 
 

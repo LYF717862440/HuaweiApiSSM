@@ -30,7 +30,7 @@ public class OrdersController {
     }
 
 
-
+    //查询总数
     @RequestMapping("/orderscount")
     @ResponseBody
     public R orderscount(String uid,String gid,String cname,String ostate){
@@ -47,27 +47,37 @@ public class OrdersController {
     }
 
 
-    @RequestMapping("/selectbyordersid")
+
+    @RequestMapping("/selectOrdersByordersid")
     @ResponseBody
-    public R selectbyordersid(String buyordersid) {
-        return R.ok(ordersService.selectOrdersAll(buyordersid));
+    public R selectOrdersByordersid(String buyordersid) {
+        return R.ok(ordersService.selectOrdersByordersid(buyordersid));
     }
 
 
 
 
-
+    //添加
     @RequestMapping("/add")
     @ResponseBody
-    public R add(@RequestBody List<Integer> ids){
+    public R add(List<Integer> ids){
         return  R.ok(ordersService.addAllOrders(ids));
     }
 
 
+    //修改
     @RequestMapping("/update")
     @ResponseBody
     public R update(Orders orders){
         return  R.ok(ordersService.updateOrders(orders));
+    }
+
+
+    //修改数量
+    @RequestMapping("/updateOAmount")
+    @ResponseBody
+    public R updateOAmount(Orders orders){
+        return  R.ok(ordersService.updateOrdersByamount(orders));
     }
 
 

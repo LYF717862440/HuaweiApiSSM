@@ -36,6 +36,10 @@ public class OrdersServiceImpl implements OrdersService {
         return ordersDao.updateOrders(orders);
     }
 
+    public boolean updateOrdersByamount(Orders orders) {
+        return ordersDao.updateOrdersByamount(orders);
+    }
+
 
     public List<Orders> getOrdersPager(int pageNO, int size, String uid, String gid, String cname,String ostate) {
         if (StringUtils.isEmpty(uid)){
